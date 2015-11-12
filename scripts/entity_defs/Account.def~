@@ -1,0 +1,20 @@
+<root>
+	<Properties>
+	</Properties>
+
+	<ClientMethods>
+        <onHello>
+           <arg>UNICODE</arg>
+        </onHello>
+	</ClientMethods>
+
+	<BaseMethods>
+        <reqHello>
+            <Exposed/>
+        </reqHello>
+	</BaseMethods>
+
+	<CellMethods>
+	</CellMethods>
+
+</root>
