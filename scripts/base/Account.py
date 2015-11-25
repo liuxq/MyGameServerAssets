@@ -41,3 +41,30 @@ class Account(KBEngine.Proxy):
 	def reqHello(self):
 		DEBUG_MSG("Account[%i].reqHello:" % self.id)
 		self.client.onHello("刘晓强")
+
+	def reqCreateAvatar(self, name, roleType):
+		props = {
+					"level": 1,
+					"name": name,
+					"roleType": roleType
+		}
+		avatar = KBEngine.createBaseLocally("Avatar",props)
+		if avatar:
+			avatar.writeToDB(self._onCharacterSaved)
+		
+
+	def _onCharacterSaved(self, success, avatar):
+		if success:
+			info = {
+				"dbid": avatar.databaseID,
+				"name": avatar.cellData["name"],
+				"roleType": avatar.roleType,
+				"level": 1
+			}
+
+			self.characters["value"].extend([info])
+			self.writeToDB()
+			avatar.destroy()
+
+			if self.client:
+				self.client.onCreateAvatarResult(0, info)

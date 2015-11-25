@@ -1,17 +1,31 @@
 <root>
 	<Properties>
+		<characters>
+			<Type> AVATAR_INFO_LIST </Type>
+			<Flags> BASE </Flags>
+			<Persistent> true </Persistent>
+		</characters>
 	</Properties>
 
 	<ClientMethods>
         <onHello>
            <Arg>UNICODE</Arg>
         </onHello>
+        <onCreateAvatarResult>
+           <Arg>UINT8</Arg>
+           <Arg>AVATAR_INFO</Arg>
+        </onCreateAvatarResult>
 	</ClientMethods>
 
 	<BaseMethods>
         <reqHello>
             <Exposed/>
         </reqHello>
+        <reqCreateAvatar>
+        	<Arg>UNICODE</Arg>
+            <Arg>UINT8</Arg>
+            <Exposed/>
+        </reqCreateAvatar>
 	</BaseMethods>
 
 	<CellMethods>
