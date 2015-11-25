@@ -42,6 +42,13 @@ class Account(KBEngine.Proxy):
 		DEBUG_MSG("Account[%i].reqHello:" % self.id)
 		self.client.onHello("刘晓强")
 
+	def reqAvatarList(self):
+		"""
+		exposed.
+		客户端请求查询角色列表
+		"""
+		DEBUG_MSG("Account[%i].reqAvatarList: size=%i." % (self.id, len(self.characters)))
+		self.client.onReqAvatarList(self.characters)
 	def reqCreateAvatar(self, name, roleType):
 		props = {
 					"level": 1,
@@ -51,6 +58,20 @@ class Account(KBEngine.Proxy):
 		avatar = KBEngine.createBaseLocally("Avatar",props)
 		if avatar:
 			avatar.writeToDB(self._onCharacterSaved)
+	def reqRemoveAvatar(self, name):
+		"""
+		exposed.
+		客户端请求删除一个角色
+		"""
+		DEBUG_MSG("Account[%i].reqRemoveAvatar: %s" % (self.id, name))
+		found = 0
+		for key, info in self.characters.items():
+			if info[1] == name:
+				del self.characters[key]
+				found = key
+				break
+		
+		self.client.onRemoveAvatar(found)
 		
 
 	def _onCharacterSaved(self, success, avatar):
@@ -68,3 +89,4 @@ class Account(KBEngine.Proxy):
 
 			if self.client:
 				self.client.onCreateAvatarResult(0, info)
+

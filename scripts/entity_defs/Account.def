@@ -11,21 +11,34 @@
         <onHello>
            <Arg>UNICODE</Arg>
         </onHello>
+        <onReqAvatarList>
+            <Arg>   AVATAR_INFO_LIST   </Arg>
+        </onReqAvatarList>
         <onCreateAvatarResult>
            <Arg>UINT8</Arg>
            <Arg>AVATAR_INFO</Arg>
         </onCreateAvatarResult>
+        <onRemoveAvatar>
+            <Arg>   DBID        </Arg>
+        </onRemoveAvatar>
 	</ClientMethods>
 
 	<BaseMethods>
         <reqHello>
             <Exposed/>
         </reqHello>
+        <reqAvatarList>
+            <Exposed/>
+        </reqAvatarList>
         <reqCreateAvatar>
         	<Arg>UNICODE</Arg>
             <Arg>UINT8</Arg>
             <Exposed/>
         </reqCreateAvatar>
+        <reqRemoveAvatar>
+            <Exposed/>
+            <Arg>   UNICODE </Arg>  <!-- name --> 
+        </reqRemoveAvatar>
 	</BaseMethods>
 
 	<CellMethods>
