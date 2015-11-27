@@ -47,7 +47,7 @@ class Account(KBEngine.Proxy):
 		exposed.
 		客户端请求查询角色列表
 		"""
-		DEBUG_MSG("Account[%i].reqAvatarList: size=%i." % (self.id, len(self.characters)))
+		DEBUG_MSG("Account[%i].reqAvatarList: size=%i." % (self.id, len(self.characters["value"])))
 		self.client.onReqAvatarList(self.characters)
 	def reqCreateAvatar(self, name, roleType):
 		props = {
@@ -65,12 +65,12 @@ class Account(KBEngine.Proxy):
 		"""
 		DEBUG_MSG("Account[%i].reqRemoveAvatar: %s" % (self.id, name))
 		found = 0
-		for key, info in self.characters.items():
-			if info[1] == name:
-				del self.characters[key]
-				found = key
+		for info in self.characters["value"]:
+			if info["name"] == name:
+				self.characters["value"].remove(info)
+				found = info["dbid"]
 				break
-		
+			
 		self.client.onRemoveAvatar(found)
 		
 
