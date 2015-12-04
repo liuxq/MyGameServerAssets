@@ -5,6 +5,10 @@
 			<Flags> BASE </Flags>
 			<Persistent> true </Persistent>
 		</characters>
+        <activeCharacter>
+            <Type>          MAILBOX             </Type>
+            <Flags>         BASE                </Flags>
+        </activeCharacter>
 	</Properties>
 
 	<ClientMethods>
@@ -24,9 +28,6 @@
 	</ClientMethods>
 
 	<BaseMethods>
-        <reqHello>
-            <Exposed/>
-        </reqHello>
         <reqAvatarList>
             <Exposed/>
         </reqAvatarList>
@@ -39,6 +40,10 @@
             <Exposed/>
             <Arg>   UNICODE </Arg>  <!-- name --> 
         </reqRemoveAvatar>
+        <selectAvatarGame>
+            <Exposed/>
+            <Arg>   DBID    </Arg>  <!-- dbid -->
+        </selectAvatarGame>
 	</BaseMethods>
 
 	<CellMethods>

@@ -1,11 +1,20 @@
 <root>
+	<Volatile>
+		<position/>
+		<!--<position> 0 </position> Don't update-->
+		<yaw/>
+		<!--<pitch> 20 </pitch>-->
+		<pitch/>
+		<roll/>
+	</Volatile>
+
+	<Implements>
+		<Interface>	GameObject		</Interface>
+		<Interface>	Motion			</Interface>
+		<Interface>	Teleport		</Interface>
+	</Implements>
+
 	<Properties>
-		
-		<name>
-			<Type> UNICODE </Type>
-			<Flags> ALL_CLIENTS </Flags>
-			<Persistent> true </Persistent>
-		</name>
 		<roleType>
 			<Type> UINT8 </Type>
 			<Flags> BASE </Flags>
@@ -23,7 +32,9 @@
 	</ClientMethods>
 
 	<BaseMethods>
-        
+		<createCell>
+			<Arg>		MAILBOX		</Arg>
+		</createCell>
 	</BaseMethods>
 
 	<CellMethods>

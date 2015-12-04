@@ -37,12 +37,15 @@ def onCellAppDataDel(key):
 	"""
 	DEBUG_MSG('onCellAppDataDel: %s' % key)
 	
-def onSpaceData( spaceID, entryID, key, value ):
+def onSpaceData( spaceID, key, value ):
 	"""
 	KBEngine method.
 	spaceData改变
+	@spaceID:  数据被设置在这个spaceID的space中.  
+	@key:  被设置的key.  
+	@value:  被设置的值， 如果值被删除则为None.  
 	"""
-	pass
+	DEBUG_MSG('onSpaceData: spaceID=%s, key=%s, value=%s.' % (spaceID, key, value))
 	
 def onAllSpaceGeometryLoaded( spaceID, isBootstrap, mapping ):
 	"""

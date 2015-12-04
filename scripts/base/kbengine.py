@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 import os
 import KBEngine
+import Watcher
+import d_spaces
 from KBEDebug import *
 
 def onBaseAppReady(isBootstrap):
@@ -10,8 +12,14 @@ def onBaseAppReady(isBootstrap):
 	@param isBootstrap: 是否为第一个启动的baseapp
 	@type isBootstrap: BOOL
 	"""
-	INFO_MSG('onBaseAppReady: isBootstrap=%s, bootstrapGroupIndex=%s, bootstrapGlobalIndex=%s' % \
-	 (isBootstrap, os.getenv("KBE_BOOTIDX_GROUP"), os.getenv("KBE_BOOTIDX_GLOBAL")))
+	INFO_MSG('onBaseAppReady: isBootstrap=%s' % isBootstrap)
+	
+	# 安装监视器
+	Watcher.setup()
+	
+	if isBootstrap:
+		# 创建spacemanager
+		KBEngine.createBaseLocally( "Spaces", {} )
 
 def onReadyForLogin(isBootstrap):
 	"""
@@ -21,6 +29,30 @@ def onReadyForLogin(isBootstrap):
 	@param isBootstrap: 是否为第一个启动的baseapp
 	@type isBootstrap: BOOL
 	"""
+	if not isBootstrap:
+		INFO_MSG('initProgress: completed!')
+		return 1.0
+		
+	spacesEntity = KBEngine.globalData["Spaces"]
+	
+	tmpDatas = list(d_spaces.datas.keys())
+	count = 0
+	total = len(tmpDatas)
+	
+	for utype in tmpDatas:
+		spaceAlloc = spacesEntity.getSpaceAllocs()[utype]
+		if spaceAlloc.__class__.__name__ != "SpaceAllocDuplicate":
+			if len(spaceAlloc.getSpaces()) > 0:
+				count += 1
+		else:
+			count += 1
+	
+	if count < total:
+		v = float(count) / total
+		# INFO_MSG('initProgress: %f' % v)
+		return v;
+	
+	INFO_MSG('initProgress: completed!')
 	return 1.0
 
 def onBaseAppShutDown(state):
@@ -93,5 +125,13 @@ def onLoseChargeCB(ordersID, dbid, success, datas):
 	"""
 	DEBUG_MSG('onLoseChargeCB: ordersID=%s, dbid=%i, success=%i, datas=%s' % \
 							(ordersID, dbid, success, datas))
-
+	
+def onAutoLoadEntityCreate(entityType, dbid):
+	"""
+	KBEngine method.
+	自动加载的entity创建方法，引擎允许脚本层重新实现实体的创建，如果脚本不实现这个方法
+	引擎底层使用createBaseAnywhereFromDBID来创建实体
+	"""
+	INFO_MSG('onAutoLoadEntityCreate: entityType=%s, dbid=%i' % (entityType, dbid))
+	KBEngine.createBaseAnywhereFromDBID(entityType, dbid)
 
