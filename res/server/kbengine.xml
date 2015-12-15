@@ -7,7 +7,7 @@
         
         <!-- defined => kbe/res/server/kbengine_defs.xml -->
         <dbmgr>
-            <host> 11.68.113.71</host> 
+            <host> localhost</host> 
             <databaseName> kbe </databaseName> 
 
             <auth>  
@@ -29,7 +29,7 @@
                         For example: account activation email address given callback.
                         Note: the availability of server does not check the address, because cannot check)
                 -->
-                <externalAddress> 120.30.127.11 </externalAddress>                                                        <!-- Type: String -->
+                <externalAddress> </externalAddress>                                                        <!-- Type: String -->
         </baseapp>
         
         <cellappmgr>
@@ -47,7 +47,7 @@
                         For example: account activation email address given callback.
                         Note: the availability of server does not check the address, because cannot check)
                 -->
-                <externalAddress> 120.30.127.11 </externalAddress>                                                        <!-- Type: String -->
+                <externalAddress> </externalAddress>                                                        <!-- Type: String -->
         </loginapp>        
         
         <machine>

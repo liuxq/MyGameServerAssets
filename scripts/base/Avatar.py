@@ -19,8 +19,6 @@ class Avatar(KBEngine.Proxy,
 		self.nameB = self.cellData["name"]
 		self.spaceUTypeB = self.cellData["spaceUType"]
 
-		self.relogin = time.time()
-
 	def onEntitiesEnabled(self):
 		"""
 		KBEngine method.
@@ -74,3 +72,9 @@ class Avatar(KBEngine.Proxy,
 		"""
 		DEBUG_MSG("Avatar[%i].onClientDeath:" % self.id)
 		self.destroySelf()
+
+	def sendChatMessage(self, msg):
+		DEBUG_MSG("Avatar[%i].sendChatMessage:" % self.id)
+		for player in KBEngine.entities.values():
+			if player.__class__.__name__ == "Avatar":
+				player.client.ReceiveChatMessage(msg)

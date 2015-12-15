@@ -28,13 +28,21 @@
 	</Properties>
 
 	<ClientMethods>
-        
+        <ReceiveChatMessage>
+        	<Arg>		UNICODE		</Arg>
+       </ReceiveChatMessage>
+
 	</ClientMethods>
 
 	<BaseMethods>
 		<createCell>
 			<Arg>		MAILBOX		</Arg>
 		</createCell>
+		<sendChatMessage>
+        	<Arg>		UNICODE		</Arg>
+        	<Exposed/>
+        </sendChatMessage>
+
 	</BaseMethods>
 
 	<CellMethods>
