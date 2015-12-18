@@ -8,7 +8,7 @@ from KBEDebug import *
 from interfaces.GameObject import GameObject
 import d_entities
 import d_spaces
-#import d_spaces_spawns
+import d_spaces_spawns
 import xml.etree.ElementTree as etree 
 
 class Space(KBEngine.Base, GameObject):
@@ -26,10 +26,57 @@ class Space(KBEngine.Base, GameObject):
 		self.spaceResName = d_spaces.datas.get(self.spaceUTypeB)['resPath']
 		
 		# 这个地图上创建的entity总数
-		#self.tmpCreateEntityDatas = copy.deepcopy(d_spaces_spawns.datas.get(self.spaceUTypeB, ()))
+		self.tmpCreateEntityDatas = copy.deepcopy(d_spaces_spawns.datas.get(self.spaceUTypeB, ()))
 		
 		self.avatars = {}
-		#self.createSpawnPointDatas()
+		self.createSpawnPointDatas()
+
+	def createSpawnPointDatas(self):
+		"""
+		"""
+
+		res = r"scripts\data\spawnpoints\%s_spawnpoints.xml" % self.spaceResName
+		
+		if(len(self.spaceResName) == 0 or not KBEngine.hasRes(res)):
+			return
+			
+		res = KBEngine.getResFullPath(res)
+			
+		tree = etree.parse(res) 
+		root = tree.getroot()
+		
+		DEBUG_MSG("Space::createSpawnPointDatas: %s" % (res))
+		
+		for child in root:
+			position = child[0][0]
+			direction = child[0][1]
+			scaleNode = child[0][2]
+			scale = int(((float(scaleNode[0].text) + float(scaleNode[1].text) + float(scaleNode[2].text)) / 3.0) * 10)
+			self.tmpCreateEntityDatas.append([int(child.attrib['name']), \
+			(float(position[0].text), float(position[1].text), float(position[2].text)), \
+			(float(direction[0].text) * ((math.pi * 2) / 360), float(direction[1].text) * ((math.pi * 2) / 360), float(direction[2].text) * ((math.pi * 2) / 360)), \
+			scale, \
+			])
+		
+	def spawnOnTimer(self, tid):
+		"""
+		出生怪物
+		"""
+		if len(self.tmpCreateEntityDatas) <= 0:
+			self.delTimer(tid)
+			return
+			
+		datas = self.tmpCreateEntityDatas.pop(0)
+		
+		if datas is None:
+			ERROR_MSG("Space::onTimer: spawn %i is error!" % datas[0])
+
+		KBEngine.createBaseAnywhere("SpawnPoint", 
+									{"spawnEntityNO"	: datas[0], 	\
+									"position"			: datas[1], 	\
+									"direction"			: datas[2],		\
+									"modelScale"		: datas[3],		\
+									"createToCell"		: self.cell})
 		
 				
 	def loginToSpace(self, avatarMailbox, context):
@@ -53,6 +100,17 @@ class Space(KBEngine.Base, GameObject):
 		请求进入某个space中
 		"""
 		entityMailbox.cell.onTeleportSpaceCB(self.cell, self.spaceUTypeB, position, direction)
+
+	def onTimer(self, tid, userArg):
+		"""
+		KBEngine method.
+		引擎回调timer触发
+		"""
+		#DEBUG_MSG("%s::onTimer: %i, tid:%i, arg:%i" % (self.getScriptName(), self.id, tid, userArg))
+		if SCDefine.TIMER_TYPE_SPACE_SPAWN_TICK == userArg:
+			self.spawnOnTimer(tid)
+		
+		GameObject.onTimer(self, tid, userArg)
 		
 	def onEnter(self, entityMailbox):
 		"""

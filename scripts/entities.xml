@@ -8,7 +8,10 @@
 	<!-- <Avatar/> -->
 	<Account hasClient="true"></Account><!-- <Account hasCell="true" hasBase="true" hasClient="true"></Account> -->
 	<Avatar hasClient="true"></Avatar>
+	<Gate hasClient="true"></Gate>
 	<Spaces/>
 	<Space/>
 	<SpaceDuplicate/>
+	<SpawnPoint/>	
+	<Gate hasClient="true"></Gate>
 </root>
