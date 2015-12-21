@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import KBEngine
 from KBEDebug import *
+import skills
 
 def onInit(isReload):
 	"""
@@ -8,6 +9,7 @@ def onInit(isReload):
 	当引擎启动后初始化完所有的脚本后这个接口被调用
 	"""
 	DEBUG_MSG('onInit::isReload:%s' % isReload)
+	skills.onInit()
 	
 def onGlobalData(key, value):
 	"""

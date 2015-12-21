@@ -10,7 +10,11 @@
 
 	<Implements>
 		<Interface>	GameObject		</Interface>
+		<Interface>	State			</Interface>
 		<Interface>	Motion			</Interface>
+		<Interface>	SkillBox		</Interface>
+		<Interface>	Combat			</Interface>
+		<Interface>	Spell			</Interface>
 		<Interface>	Teleport		</Interface>
 	</Implements>
 
@@ -46,6 +50,10 @@
 	</BaseMethods>
 
 	<CellMethods>
+		<relive>
+			<Exposed/>
+			<Arg>		UINT8		</Arg>
+		</relive>
 	</CellMethods>
 
 </root>

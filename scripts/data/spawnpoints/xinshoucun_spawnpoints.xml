@@ -18,4 +18,24 @@
       </scale>
     </transform>
   </gameObject>
+
+  <gameObject name="80008001">
+    <transform>
+      <position>
+        <x>-12.0243</x>
+        <y>0.0</y>
+        <z>12.2725</z>
+      </position>
+      <direction>
+        <x>0</x>
+        <y>0</y>
+        <z>201.749</z>
+      </direction>
+      <scale>
+        <x>1.5</x>
+        <y>1.5</y>
+        <z>1.5</z>
+      </scale>
+    </transform>
+  </gameObject>
 </root>

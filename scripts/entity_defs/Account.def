@@ -12,9 +12,6 @@
 	</Properties>
 
 	<ClientMethods>
-        <onHello>
-           <Arg>UNICODE</Arg>
-        </onHello>
         <onReqAvatarList>
             <Arg>   AVATAR_INFO_LIST   </Arg>
         </onReqAvatarList>

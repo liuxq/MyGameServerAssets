@@ -3,17 +3,29 @@ import KBEngine
 import GlobalDefine
 from KBEDebug import *
 from interfaces.GameObject import GameObject
-from interfaces.Motion import Motion
+from interfaces.Combat import Combat
+from interfaces.Spell import Spell
 from interfaces.Teleport import Teleport
+from interfaces.State import State
+from interfaces.Motion import Motion
+from interfaces.SkillBox import SkillBox
 
 class Avatar(KBEngine.Entity,
 				GameObject,
-				Motion,
-				Teleport):
+				State,
+				Motion, 
+				SkillBox,
+				Combat, 
+				Spell, 
+				Teleport,):
 	def __init__(self):
 		KBEngine.Entity.__init__(self)
-		GameObject.__init__(self)
-		Motion.__init__(self)
+		GameObject.__init__(self) 
+		State.__init__(self) 
+		Motion.__init__(self) 
+		SkillBox.__init__(self) 
+		Combat.__init__(self) 
+		Spell.__init__(self) 
 		Teleport.__init__(self) 
 
 		# 设置每秒允许的最快速度, 超速会被拉回去
@@ -26,6 +38,32 @@ class Avatar(KBEngine.Entity,
 		"""
 		return True
 
+	#-----------------------------------------------------------------------------------
+	#                              Callbacks
+	#-----------------------------------------------------------------------------------
+	def onTimer(self, tid, userArg):
+		"""
+		KBEngine method.
+		引擎回调timer触发
+		"""
+		#DEBUG_MSG("%s::onTimer: %i, tid:%i, arg:%i" % (self.getScriptName(), self.id, tid, userArg))
+		GameObject.onTimer(self, tid, userArg)
+		Spell.onTimer(self, tid, userArg)
+		
+	def onGetWitness(self):
+		"""
+		KBEngine method.
+		绑定了一个观察者(客户端)
+		"""
+		DEBUG_MSG("Avatar::onGetWitness: %i." % self.id)
+
+	def onLoseWitness(self):
+		"""
+		KBEngine method.
+		解绑定了一个观察者(客户端)
+		"""
+		DEBUG_MSG("Avatar::onLoseWitness: %i." % self.id)
+	
 	def onDestroy(self):
 		"""
 		KBEngine method.
@@ -33,5 +71,24 @@ class Avatar(KBEngine.Entity,
 		"""
 		DEBUG_MSG("Avatar::onDestroy: %i." % self.id)
 		Teleport.onDestroy(self)
+		Combat.onDestroy(self)
+		
+	def relive(self, exposed, type):
+		"""
+		defined.
+		复活
+		"""
+		if exposed != self.id:
+			return
+			
+		DEBUG_MSG("Avatar::relive: %i, type=%i." % (self.id, type))
+		
+		# 回城复活
+		if type == 0:
+			pass
+			
+		self.fullPower()
+		self.changeState(GlobalDefine.ENTITY_STATE_FREE)
+
 		
 	
