@@ -73,7 +73,7 @@ class GameObject:
 		
 		启动销毁entitytimer
 		"""
-		if self.isState(GlobalDefine.ENTITY_STATE_DEAD):
+		if self.isState(GlobalDefine.ENTITY_STATE_DEAD) & ~self.isPlayer():
 			self.addTimer(5, 0, SCDefine.TIMER_TYPE_DESTROY)
 			DEBUG_MSG("%s::startDestroyTimer: %i running." % (self.getScriptName(), self.id))
 	
