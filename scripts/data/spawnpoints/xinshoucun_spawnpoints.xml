@@ -2,9 +2,69 @@
   <gameObject name="40001002">
     <transform>
       <position>
-        <x>12.0243</x>
-        <y>0.0</y>
-        <z>12.2725</z>
+        <x>0.0243</x>
+        <y>3.0</y>
+        <z>100.2725</z>
+      </position>
+      <direction>
+        <x>0</x>
+        <y>0</y>
+        <z>201.749</z>
+      </direction>
+      <scale>
+        <x>1.5</x>
+        <y>1.5</y>
+        <z>1.5</z>
+      </scale>
+    </transform>
+  </gameObject>
+
+  <gameObject name="40001002">
+    <transform>
+      <position>
+        <x>1.0243</x>
+        <y>3.0</y>
+        <z>-100.2725</z>
+      </position>
+      <direction>
+        <x>0</x>
+        <y>0</y>
+        <z>201.749</z>
+      </direction>
+      <scale>
+        <x>1.5</x>
+        <y>1.5</y>
+        <z>1.5</z>
+      </scale>
+    </transform>
+  </gameObject>
+
+  <gameObject name="40001002">
+    <transform>
+      <position>
+        <x>100.0243</x>
+        <y>3.0</y>
+        <z>0.2725</z>
+      </position>
+      <direction>
+        <x>0</x>
+        <y>0</y>
+        <z>201.749</z>
+      </direction>
+      <scale>
+        <x>1.5</x>
+        <y>1.5</y>
+        <z>1.5</z>
+      </scale>
+    </transform>
+  </gameObject>
+
+   <gameObject name="40001002">
+    <transform>
+      <position>
+        <x>-100.0243</x>
+        <y>3.0</y>
+        <z>0.2725</z>
       </position>
       <direction>
         <x>0</x>
@@ -24,7 +84,187 @@
       <position>
         <x>-12.0243</x>
         <y>0.0</y>
-        <z>12.2725</z>
+        <z>32.2725</z>
+      </position>
+      <direction>
+        <x>0</x>
+        <y>0</y>
+        <z>201.749</z>
+      </direction>
+      <scale>
+        <x>1.5</x>
+        <y>1.5</y>
+        <z>1.5</z>
+      </scale>
+    </transform>
+  </gameObject>
+
+  <gameObject name="80008001">
+    <transform>
+      <position>
+        <x>-15.0243</x>
+        <y>0.0</y>
+        <z>45.2725</z>
+      </position>
+      <direction>
+        <x>0</x>
+        <y>0</y>
+        <z>201.749</z>
+      </direction>
+      <scale>
+        <x>1.5</x>
+        <y>1.5</y>
+        <z>1.5</z>
+      </scale>
+    </transform>
+  </gameObject>
+
+  <gameObject name="80008001">
+    <transform>
+      <position>
+        <x>0.0243</x>
+        <y>0.0</y>
+        <z>21.2725</z>
+      </position>
+      <direction>
+        <x>0</x>
+        <y>0</y>
+        <z>201.749</z>
+      </direction>
+      <scale>
+        <x>1.5</x>
+        <y>1.5</y>
+        <z>1.5</z>
+      </scale>
+    </transform>
+  </gameObject>
+
+  <gameObject name="80008001">
+    <transform>
+      <position>
+        <x>12.0243</x>
+        <y>0.0</y>
+        <z>32.2725</z>
+      </position>
+      <direction>
+        <x>0</x>
+        <y>0</y>
+        <z>201.749</z>
+      </direction>
+      <scale>
+        <x>1.5</x>
+        <y>1.5</y>
+        <z>1.5</z>
+      </scale>
+    </transform>
+  </gameObject>
+
+  <gameObject name="80008001">
+    <transform>
+      <position>
+        <x>25.0243</x>
+        <y>0.0</y>
+        <z>42.2725</z>
+      </position>
+      <direction>
+        <x>0</x>
+        <y>0</y>
+        <z>201.749</z>
+      </direction>
+      <scale>
+        <x>1.5</x>
+        <y>1.5</y>
+        <z>1.5</z>
+      </scale>
+    </transform>
+  </gameObject>
+
+  <gameObject name="80008001">
+    <transform>
+      <position>
+        <x>31.0243</x>
+        <y>0.0</y>
+        <z>52.2725</z>
+      </position>
+      <direction>
+        <x>0</x>
+        <y>0</y>
+        <z>201.749</z>
+      </direction>
+      <scale>
+        <x>1.5</x>
+        <y>1.5</y>
+        <z>1.5</z>
+      </scale>
+    </transform>
+  </gameObject>
+
+  <gameObject name="80008001">
+    <transform>
+      <position>
+        <x>40.0243</x>
+        <y>0.0</y>
+        <z>42.2725</z>
+      </position>
+      <direction>
+        <x>0</x>
+        <y>0</y>
+        <z>201.749</z>
+      </direction>
+      <scale>
+        <x>1.5</x>
+        <y>1.5</y>
+        <z>1.5</z>
+      </scale>
+    </transform>
+  </gameObject>
+
+  <gameObject name="80008001">
+    <transform>
+      <position>
+        <x>-19.0243</x>
+        <y>0.0</y>
+        <z>32.2725</z>
+      </position>
+      <direction>
+        <x>0</x>
+        <y>0</y>
+        <z>201.749</z>
+      </direction>
+      <scale>
+        <x>1.5</x>
+        <y>1.5</y>
+        <z>1.5</z>
+      </scale>
+    </transform>
+  </gameObject>
+
+  <gameObject name="80008001">
+    <transform>
+      <position>
+        <x>-25.0243</x>
+        <y>0.0</y>
+        <z>32.2725</z>
+      </position>
+      <direction>
+        <x>0</x>
+        <y>0</y>
+        <z>201.749</z>
+      </direction>
+      <scale>
+        <x>1.5</x>
+        <y>1.5</y>
+        <z>1.5</z>
+      </scale>
+    </transform>
+  </gameObject>
+
+  <gameObject name="80008001">
+    <transform>
+      <position>
+        <x>-30.0243</x>
+        <y>0.0</y>
+        <z>35.2725</z>
       </position>
       <direction>
         <x>0</x>
