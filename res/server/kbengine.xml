@@ -14,6 +14,22 @@
                 <username> kbe </username>                                    <!-- Type: String -->
                 <password> kbe </password>                                    <!-- Type: String -->
             </auth>
+            <!-- 账号系统
+            (Account system)
+        -->
+            <account_system>
+                <account_registration> 
+                    <!-- 是否开放注册 
+                        (Whether open registration)
+                    -->
+                    <enable>    true    </enable>
+                    
+                    <!-- 登录合法时游戏数据库找不到游戏账号则自动创建 
+                        (When logged in, the game database can not find the game account is automatically created)
+                    -->
+                    <loginAutoCreate> false </loginAutoCreate>
+                </account_registration>
+            </account_system>
         </dbmgr>
         
         <cellapp>
@@ -21,9 +37,9 @@
         
         <baseapp>
                 <backupPeriod> 500 </backupPeriod>
-                <!-- ǿ��ָ���ⲿIP��ַ������������ĳЩ���绷���£����ܻ�ʹ�ö˿�ӳ��ķ�ʽ�����ʾ������ڲ���KBE����������ôKBE�ڵ�ǰ
-                        �Ļ����ϻ�õ��ⲿ��ַ�Ǿ�������ַ����ʱĳЩ���ܽ��᲻���������磺�˺ż����ʼ��и����Ļص���ַ, ��¼baseapp��
-                        ע�⣺����˲������������ַ�Ŀ����ԣ���Ϊ�޷���顣
+                <!-- Ç¿ÖÆÖ¸¶¨Íâ²¿IPµØÖ·»òÕßÓòÃû£¬ÔÚÄ³Ð©ÍøÂç»·¾³ÏÂ£¬¿ÉÄÜ»áÊ¹ÓÃ¶Ë¿ÚÓ³ÉäµÄ·½Ê½À´·ÃÎÊ¾ÖÓòÍøÄÚ²¿µÄKBE·þÎñÆ÷£¬ÄÇÃ´KBEÔÚµ±Ç°
+                        µÄ»úÆ÷ÉÏ»ñµÃµÄÍâ²¿µØÖ·ÊÇ¾ÖÓòÍøµØÖ·£¬´ËÊ±Ä³Ð©¹¦ÄÜ½«»á²»Õý³£¡£ÀýÈç£ºÕËºÅ¼¤»îÓÊ¼þÖÐ¸ø³öµÄ»Øµ÷µØÖ·, µÇÂ¼baseapp¡£
+                        ×¢Òâ£º·þÎñ¶Ë²¢²»»á¼ì²éÕâ¸öµØÖ·µÄ¿ÉÓÃÐÔ£¬ÒòÎªÎÞ·¨¼ì²é¡£
                         (Forced to specify an external IP-address or Domain-name, In some server environment, May use the port mapping to access KBE,
                         So KBE on current machines on the external IP address may be a LAN IP address, Then some functions will not normal.
                         For example: account activation email address given callback.
@@ -39,9 +55,9 @@
         </baseappmgr>
         
         <loginapp>
-                <!-- ǿ��ָ���ⲿIP��ַ������������ĳЩ���绷���£����ܻ�ʹ�ö˿�ӳ��ķ�ʽ�����ʾ������ڲ���KBE����������ôKBE�ڵ�ǰ
-                        �Ļ����ϻ�õ��ⲿ��ַ�Ǿ�������ַ����ʱĳЩ���ܽ��᲻���������磺�˺ż����ʼ��и����Ļص���ַ, ��¼baseapp��
-                        ע�⣺����˲������������ַ�Ŀ����ԣ���Ϊ�޷���顣
+                <!-- Ç¿ÖÆÖ¸¶¨Íâ²¿IPµØÖ·»òÕßÓòÃû£¬ÔÚÄ³Ð©ÍøÂç»·¾³ÏÂ£¬¿ÉÄÜ»áÊ¹ÓÃ¶Ë¿ÚÓ³ÉäµÄ·½Ê½À´·ÃÎÊ¾ÖÓòÍøÄÚ²¿µÄKBE·þÎñÆ÷£¬ÄÇÃ´KBEÔÚµ±Ç°
+                        µÄ»úÆ÷ÉÏ»ñµÃµÄÍâ²¿µØÖ·ÊÇ¾ÖÓòÍøµØÖ·£¬´ËÊ±Ä³Ð©¹¦ÄÜ½«»á²»Õý³£¡£ÀýÈç£ºÕËºÅ¼¤»îÓÊ¼þÖÐ¸ø³öµÄ»Øµ÷µØÖ·, µÇÂ¼baseapp¡£
+                        ×¢Òâ£º·þÎñ¶Ë²¢²»»á¼ì²éÕâ¸öµØÖ·µÄ¿ÉÓÃÐÔ£¬ÒòÎªÎÞ·¨¼ì²é¡£
                         (Forced to specify an external IP-address or Domain-name, In some server environment, May use the port mapping to access KBE,
                         So KBE on current machines on the external IP address may be a LAN IP address, Then some functions will not normal.
                         For example: account activation email address given callback.
