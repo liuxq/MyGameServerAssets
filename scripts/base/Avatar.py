@@ -6,12 +6,14 @@ from interfaces.GameObject import GameObject
 from interfaces.Teleport import Teleport
 
 class Avatar(KBEngine.Proxy,
-				GameObject,
-				Teleport):
+			GameObject,
+			Teleport):
+	"""
+	角色实体
+	"""
 	def __init__(self):
 		KBEngine.Proxy.__init__(self)
 		GameObject.__init__(self)
-		self.spaceUTypeB = self.cellData["spaceUType"]
 		Teleport.__init__(self)
 		
 		self.accountEntity = None
@@ -56,7 +58,7 @@ class Avatar(KBEngine.Proxy,
 		# 如果帐号ENTITY存在 则也通知销毁它
 		if self.accountEntity != None:
 			if time.time() - self.accountEntity.relogin > 1:
-				self.accountEntity.activeCharacter = None
+				self.accountEntity.activeAvatar = None
 				self.accountEntity.destroy()
 				self.accountEntity = None
 			else:

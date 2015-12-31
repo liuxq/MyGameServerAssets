@@ -37,7 +37,7 @@ class Spell:
 		对一个目标entity施放一个技能
 		"""
 		DEBUG_MSG("Spell::spellTarget(%i):skillID=%i, targetID=%i" % (self.id, skillID, targetID))
-
+		
 		skill = skills.getSkill(skillID)
 		if skill is None:
 			ERROR_MSG("Spell::spellTarget(%i):skillID=%i not found" % (self.id, skillID))

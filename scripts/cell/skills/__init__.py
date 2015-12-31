@@ -18,7 +18,6 @@ def onInit():
 		scriptinst = eval(script)()
 		_g_skills[key] = scriptinst
 		scriptinst.loadFromDict(datas)
-	
 		
 def getSkill(skillID):
 	return _g_skills.get(skillID)

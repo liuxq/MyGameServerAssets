@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-import os
 import KBEngine
 import Watcher
 import d_spaces
@@ -20,7 +19,18 @@ def onBaseAppReady(isBootstrap):
 	if isBootstrap:
 		# 创建spacemanager
 		KBEngine.createBaseLocally( "Spaces", {} )
-
+	
+def onBaseAppShutDown(state):
+	"""
+	KBEngine method.
+	这个baseapp被关闭前的回调函数
+	@param state:  0 : 在断开所有客户端之前
+						 1 : 在将所有entity写入数据库之前
+						 2 : 所有entity被写入数据库之后
+	@type state: int					 
+	"""
+	INFO_MSG('onBaseAppShutDown: state=%i' % state)
+	
 def onReadyForLogin(isBootstrap):
 	"""
 	KBEngine method.
@@ -55,17 +65,15 @@ def onReadyForLogin(isBootstrap):
 	INFO_MSG('initProgress: completed!')
 	return 1.0
 
-def onBaseAppShutDown(state):
+def onAutoLoadEntityCreate(entityType, dbid):
 	"""
 	KBEngine method.
-	这个baseapp被关闭前的回调函数
-	@param state: 0 : 在断开所有客户端之前
-				  1 : 在将所有entity写入数据库之前
-				  2 : 所有entity被写入数据库之后
-	@type state: int
+	自动加载的entity创建方法，引擎允许脚本层重新实现实体的创建，如果脚本不实现这个方法
+	引擎底层使用createBaseAnywhereFromDBID来创建实体
 	"""
-	INFO_MSG('onBaseAppShutDown: state=%i' % state)
-		
+	INFO_MSG('onAutoLoadEntityCreate: entityType=%s, dbid=%i' % (entityType, dbid))
+	KBEngine.createBaseAnywhereFromDBID(entityType, dbid)
+	
 def onInit(isReload):
 	"""
 	KBEngine method.
@@ -102,20 +110,20 @@ def onGlobalDataDel(key):
 	globalData有删除
 	"""
 	DEBUG_MSG('onDelGlobalData: %s' % key)
-	
-def onGlobalBases(key, value):
+
+def onBaseAppData(key, value):
 	"""
 	KBEngine method.
-	globalBases有改变
+	baseAppData有改变
 	"""
-	DEBUG_MSG('onGlobalBases: %s' % key)
+	DEBUG_MSG('onBaseAppData: %s' % key)
 	
-def onGlobalBasesDel(key):
+def onBaseAppDataDel(key):
 	"""
 	KBEngine method.
-	globalBases有删除
+	baseAppData有删除
 	"""
-	DEBUG_MSG('onGlobalBasesDel: %s' % key)
+	DEBUG_MSG('onBaseAppDataDel: %s' % key)
 
 def onLoseChargeCB(ordersID, dbid, success, datas):
 	"""
@@ -125,13 +133,5 @@ def onLoseChargeCB(ordersID, dbid, success, datas):
 	"""
 	DEBUG_MSG('onLoseChargeCB: ordersID=%s, dbid=%i, success=%i, datas=%s' % \
 							(ordersID, dbid, success, datas))
-	
-def onAutoLoadEntityCreate(entityType, dbid):
-	"""
-	KBEngine method.
-	自动加载的entity创建方法，引擎允许脚本层重新实现实体的创建，如果脚本不实现这个方法
-	引擎底层使用createBaseAnywhereFromDBID来创建实体
-	"""
-	INFO_MSG('onAutoLoadEntityCreate: entityType=%s, dbid=%i' % (entityType, dbid))
-	KBEngine.createBaseAnywhereFromDBID(entityType, dbid)
+
 

@@ -17,7 +17,7 @@ class Avatar(KBEngine.Entity,
 				SkillBox,
 				Combat, 
 				Spell, 
-				Teleport,):
+				Teleport):
 	def __init__(self):
 		KBEngine.Entity.__init__(self)
 		GameObject.__init__(self) 
@@ -31,16 +31,16 @@ class Avatar(KBEngine.Entity,
 		# 设置每秒允许的最快速度, 超速会被拉回去
 		self.topSpeed = self.moveSpeed + 5.0
 		# self.topSpeedY = 10.0
-
+			
 	def isPlayer(self):
 		"""
 		virtual method.
 		"""
 		return True
 
-	#-----------------------------------------------------------------------------------
+	#--------------------------------------------------------------------------------------------
 	#                              Callbacks
-	#-----------------------------------------------------------------------------------
+	#--------------------------------------------------------------------------------------------
 	def onTimer(self, tid, userArg):
 		"""
 		KBEngine method.

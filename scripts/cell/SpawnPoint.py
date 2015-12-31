@@ -16,7 +16,7 @@ class SpawnPoint(KBEngine.Entity, GameObject):
 		if datas is None:
 			ERROR_MSG("SpawnPoint::spawn:%i not found." % self.spawnEntityNO)
 			return
-
+			
 		params = {
 			"spawnID"	: self.id,
 			"spawnPos" : tuple(self.position),

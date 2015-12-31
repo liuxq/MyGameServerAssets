@@ -30,7 +30,7 @@ class Space(KBEngine.Base, GameObject):
 		
 		self.avatars = {}
 		self.createSpawnPointDatas()
-
+		
 	def createSpawnPointDatas(self):
 		"""
 		"""
@@ -77,7 +77,6 @@ class Space(KBEngine.Base, GameObject):
 									"direction"			: datas[2],		\
 									"modelScale"		: datas[3],		\
 									"createToCell"		: self.cell})
-		
 				
 	def loginToSpace(self, avatarMailbox, context):
 		"""

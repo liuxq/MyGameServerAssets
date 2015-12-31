@@ -53,7 +53,6 @@ class Gate(KBEngine.Entity, GameObject):
 		
 		if self.uid == 40001002: # currspace - teleport
 			spaceData = d_spaces.datas.get(entityEntering.spaceUType)
-
 			entityEntering.teleport(None, spaceData["spawnPos"], tuple(self.direction))		
 		else:					 # teleport to xxspace
 			if entityEntering.spaceUType == 3:
