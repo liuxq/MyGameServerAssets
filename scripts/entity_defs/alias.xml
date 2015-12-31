@@ -57,4 +57,29 @@
 			</values>
 		</Properties>
 	</AVATAR_INFO_LIST>
+	
+	<ITEM_INFO>  FIXED_DICT
+        <implementedBy>ITEM_INFO.item_info_inst</implementedBy>
+        <Properties>
+            <UUID>
+                    <Type> DBID </Type>        
+            </UUID>
+            <itemId>
+                    <Type> ITEM_ID </Type>
+            </itemId>
+            <itemCount>
+                    <Type> ITEM_COUNT </Type>
+            </itemCount>
+        </Properties>
+    </ITEM_INFO>        
+        
+    <ITEM_INFO_LIST>  FIXED_DICT
+        <implementedBy>ITEM_INFO.item_info_list_inst</implementedBy>
+        <Properties>
+            <values>
+                    <Type>        ARRAY <of> ITEM_INFO </of>        </Type>
+            </values>
+        </Properties>
+    </ITEM_INFO_LIST>        
+
 </root>
