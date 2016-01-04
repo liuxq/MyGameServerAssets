@@ -80,3 +80,7 @@ class Avatar(KBEngine.Proxy,
 		for player in KBEngine.entities.values():
 			if player.__class__.__name__ == "Avatar":
 				player.client.ReceiveChatMessage(msg)
+
+	def reqItemList(self):
+		if self.client:
+			self.client.onReqItemList(self.itemList)

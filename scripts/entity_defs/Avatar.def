@@ -38,8 +38,12 @@
 
 	<ClientMethods>
         <ReceiveChatMessage>
-        	<Arg>		UNICODE		</Arg>
+        	<Arg>	UNICODE	</Arg>
         </ReceiveChatMessage>
+
+        <onReqItemList>
+        	<Arg>   ITEM_INFO_LIST   </Arg>
+        </onReqItemList>
 
 	</ClientMethods>
 
@@ -51,6 +55,9 @@
         	<Arg>		UNICODE		</Arg>
         	<Exposed/>
         </sendChatMessage>
+        <reqItemList>
+        	<Exposed/>
+        </reqItemList>
 
 	</BaseMethods>
 
