@@ -31,7 +31,7 @@
 		</level>
 		<itemList>
 			<Type> ITEM_INFO_LIST </Type>
-			<Flags> BASE </Flags>
+			<Flags> BASE_AND_CLINET </Flags>
 			<Persistent> true </Persistent>
 		</itemList>
 	</Properties>
@@ -58,6 +58,10 @@
         <reqItemList>
         	<Exposed/>
         </reqItemList>
+        <addItem>
+        	<Arg>  
+        	<Exposed/>
+        </addItem>
 
 	</BaseMethods>
 
