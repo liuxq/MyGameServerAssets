@@ -20,6 +20,7 @@ class Avatar(KBEngine.Proxy,
 		self.cellData["dbid"] = self.databaseID
 		self.nameB = self.cellData["name"]
 		self.spaceUTypeB = self.cellData["spaceUType"]
+		self.inventory = InventoryMgr(self)
 
 	def onEntitiesEnabled(self):
 		"""
