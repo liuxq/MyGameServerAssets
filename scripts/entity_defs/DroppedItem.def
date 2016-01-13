@@ -11,11 +11,20 @@
 	</Implements>
 
 	<Properties>
+		<itemId>
+			<Type>			ITEM_ID			</Type>
+			<Flags>			CELL_PUBLIC		</Flags>
+			<Default>		0			</Default>
+			<Persistent>	true			</Persistent>
+		</itemId>
 	</Properties>
 
 	<BaseMethods>
 	</BaseMethods>
 
 	<CellMethods>
+		<pickUpRequest>
+			<Exposed/>
+		</pickUpRequest>
 	</CellMethods>
 </root>

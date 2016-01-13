@@ -1,9 +1,14 @@
+import weakref
+import KBEngine
+
+from ITEM_INFO import TItemInfo
+
 class InventoryMgr:
 	"""docstring for InventoryMgr"""
-	NOITEM = -1
+	#NOITEM = -1
 	def __init__(self, entity):
 		self._entity = weakref.proxy(entity)
-		self._curItemIndex = NOITEM
+		#self._curItemIndex = NOITEM
 
 	def addItem(self, itemId, itemUUID = None):
 		if itemUUID is None:

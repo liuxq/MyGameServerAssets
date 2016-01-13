@@ -4,6 +4,7 @@ import time
 from KBEDebug import *
 from interfaces.GameObject import GameObject
 from interfaces.Teleport import Teleport
+from Inventory import InventoryMgr
 
 class Avatar(KBEngine.Proxy,
 			GameObject,
@@ -85,3 +86,8 @@ class Avatar(KBEngine.Proxy,
 	def reqItemList(self):
 		if self.client:
 			self.client.onReqItemList(self.itemList)
+
+	def pickUpResponse(self, success, droppedItemID, itemID):
+		if success:
+			itemUUId = self.inventory.addItem(itemID)
+			self.client.pickUpResponse(True, droppedItemID, itemUUId)

@@ -45,6 +45,12 @@
         	<Arg>   ITEM_INFO_LIST   </Arg>
         </onReqItemList>
 
+        <pickUpResponse>
+        	<Arg>  BOOL </Arg>
+        	<Arg>  ENTITY_ID </Arg>
+        	<Arg>  DBID  </Arg>
+        </pickUpResponse>
+
 	</ClientMethods>
 
 	<BaseMethods>
@@ -58,6 +64,12 @@
         <reqItemList>
         	<Exposed/>
         </reqItemList>
+        <pickUpResponse>
+        	<Arg>  BOOL </Arg>
+        	<Arg>  ENTITY_ID </Arg>
+        	<Arg>  ITEM_ID  </Arg>
+        </pickUpResponse>
+
 	</BaseMethods>
 
 	<CellMethods>
