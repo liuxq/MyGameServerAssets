@@ -19,7 +19,9 @@ class InventoryMgr:
 		return itemUUID
 
 	def removeItem(self, itemUUID):
+		itemId = self._entity.itemList[itemUUID][1]
 		del self._entity.itemList[itemUUID]
+		return itemId
 			
 
 

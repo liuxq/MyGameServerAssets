@@ -51,6 +51,10 @@
         	<Arg>  DBID  </Arg>
         </pickUpResponse>
 
+        <dropNotify>
+			<Arg> 	ITEM_ID	</Arg>
+		</dropNotify>
+
 	</ClientMethods>
 
 	<BaseMethods>
@@ -69,14 +73,21 @@
         	<Arg>  ENTITY_ID </Arg>
         	<Arg>  ITEM_ID  </Arg>
         </pickUpResponse>
+        <dropRequest>
+        	<Exposed/>
+        	<Arg> DBID </Arg>
+        </dropRequest>
 
 	</BaseMethods>
 
 	<CellMethods>
 		<relive>
 			<Exposed/>
-			<Arg>		UINT8		</Arg>
+			<Arg>	UINT8	</Arg>
 		</relive>
+		<dropNotify>
+			<Arg> 	ITEM_ID	</Arg>
+		</dropNotify>
 	</CellMethods>
 
 </root>

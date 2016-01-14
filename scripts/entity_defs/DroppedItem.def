@@ -13,7 +13,7 @@
 	<Properties>
 		<itemId>
 			<Type>			ITEM_ID			</Type>
-			<Flags>			CELL_PUBLIC		</Flags>
+			<Flags>			ALL_CLIENTS		</Flags>
 			<Default>		0			</Default>
 			<Persistent>	true			</Persistent>
 		</itemId>

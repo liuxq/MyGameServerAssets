@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import KBEngine
 import GlobalDefine
+import d_entities
 from KBEDebug import *
 from interfaces.GameObject import GameObject
 from interfaces.Combat import Combat
@@ -37,6 +38,25 @@ class Avatar(KBEngine.Entity,
 		virtual method.
 		"""
 		return True
+
+	def dropNotify(self, itemId):
+		datas = d_entities.datas.get(40001003)
+		
+		if datas is None:
+			ERROR_MSG("SpawnPoint::spawn:%i not found." % 40001003)
+			return
+			
+		params = {
+			"uid" : datas["id"],
+			"utype" : datas["etype"],
+			"modelID" : datas["modelID"],
+			"dialogID" : datas["dialogID"],
+			"name" : datas["name"],
+			"descr" : datas.get("descr", ''),
+			"itemId" : itemId,
+		}
+		
+		e = KBEngine.createEntity("DroppedItem", self.spaceID, tuple(self.position), tuple(self.direction), params)
 
 	
 
