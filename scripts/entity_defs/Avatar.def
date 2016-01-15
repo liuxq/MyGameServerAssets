@@ -47,7 +47,7 @@
 
         <pickUpResponse>
         	<Arg>  BOOL </Arg>
-        	<Arg>  ENTITY_ID </Arg>
+        	<Arg>  ITEM_ID </Arg>
         	<Arg>  DBID  </Arg>
         </pickUpResponse>
 

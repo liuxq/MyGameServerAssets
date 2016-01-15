@@ -27,7 +27,7 @@ class DroppedItem(KBEngine.Entity, GameObject):
 			picker = KBEngine.entities[whomID]
 			picker.base.pickUpResponse(True, self.id, self.itemId)
 			self.pickerID = whomID
-			self.addTimer(2,0,self.DESTROY_TIMER)
+			self.addTimer(0.1,0,self.DESTROY_TIMER)
 
 	def onTimer( self, timerId, userId):
 		if userId == self.DESTROY_TIMER:
