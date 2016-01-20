@@ -16,7 +16,6 @@ class DroppedItem(KBEngine.Entity, GameObject):
 	def __init__(self):
 		KBEngine.Entity.__init__(self)
 		GameObject.__init__(self) 
-		self.itemId = 1
 		self.pickerID = 0
 		self.DESTROY_TIMER = 1001
 		

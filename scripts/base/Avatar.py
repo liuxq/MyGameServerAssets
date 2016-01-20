@@ -90,9 +90,12 @@ class Avatar(KBEngine.Proxy,
 	def pickUpResponse(self, success, droppedItemID, itemID):
 		if success:
 			itemUUId = self.inventory.addItem(itemID)
-			self.client.pickUpResponse(True, itemID, itemUUId)
+			self.client.pickUpResponse(True, itemID, itemUUId, self.itemList[itemUUId][3])
 
 	def dropRequest( self, itemUUId ):
 
 		itemId = self.inventory.removeItem( itemUUId )
 		self.cell.dropNotify( itemId )
+
+	def swapItemRequest( self, srcIndex, dstIndex):
+		self.inventory.swapItem(srcIndex, dstIndex)

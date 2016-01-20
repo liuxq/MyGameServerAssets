@@ -49,6 +49,7 @@
         	<Arg>  BOOL </Arg>
         	<Arg>  ITEM_ID </Arg>
         	<Arg>  DBID  </Arg>
+        	<Arg>  INT32  </Arg>
         </pickUpResponse>
 
         <dropNotify>
@@ -77,6 +78,11 @@
         	<Exposed/>
         	<Arg> DBID </Arg>
         </dropRequest>
+        <swapItemRequest>
+        	<Exposed/>
+        	<Arg> INT32 </Arg>
+        	<Arg> INT32 </Arg>
+        </swapItemRequest>
 
 	</BaseMethods>
 

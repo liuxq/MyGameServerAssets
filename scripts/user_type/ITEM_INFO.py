@@ -16,12 +16,13 @@ class TItemInfo(list):
 			"UUID"			: self[0],
 			"itemId"		: self[1],
 			"itemCount"		: self[2],
+			"itemIndex"		: self[3],
 		}
 		
 		return data
 
 	def createFromDict(self, dictData):
-		self.extend([dictData["UUID"], dictData["itemId"], dictData["itemCount"]])
+		self.extend([dictData["UUID"], dictData["itemId"], dictData["itemCount"], dictData["itemIndex"]])
 		return self
 		
 class ITEM_INFO_PICKLER:

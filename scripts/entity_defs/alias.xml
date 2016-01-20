@@ -71,6 +71,9 @@
             <itemCount>
                     <Type> ITEM_COUNT </Type>
             </itemCount>
+            <itemIndex>
+                    <Type> INT32 </Type>
+            </itemIndex>
         </Properties>
     </ITEM_INFO>        
         
