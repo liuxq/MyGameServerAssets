@@ -27,6 +27,7 @@ class SpawnPoint(KBEngine.Entity, GameObject):
 			"dialogID" : datas["dialogID"],
 			"name" : datas["name"],
 			"descr" : datas.get("descr", ''),
+			"itemId" : 2,
 		}
 		
 		e = KBEngine.createEntity(datas["entityType"], self.spaceID, tuple(self.position), tuple(self.direction), params)
