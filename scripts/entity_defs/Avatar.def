@@ -34,6 +34,11 @@
 			<Flags> BASE_AND_CLIENT </Flags>
 			<Persistent> true </Persistent>
 		</itemList>
+		<equipItemList>
+			<Type> ITEM_INFO_LIST </Type>
+			<Flags> BASE_AND_CLIENT </Flags>
+			<Persistent> true </Persistent>
+		</equipItemList>
 	</Properties>
 
 	<ClientMethods>
@@ -42,6 +47,7 @@
         </ReceiveChatMessage>
 
         <onReqItemList>
+        	<Arg>   ITEM_INFO_LIST   </Arg>
         	<Arg>   ITEM_INFO_LIST   </Arg>
         </onReqItemList>
 

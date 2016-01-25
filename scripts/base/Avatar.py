@@ -85,7 +85,7 @@ class Avatar(KBEngine.Proxy,
 
 	def reqItemList(self):
 		if self.client:
-			self.client.onReqItemList(self.itemList)
+			self.client.onReqItemList(self.itemList, self.equipItemList)
 
 	def pickUpResponse(self, success, droppedItemID, itemID):
 		if success:
