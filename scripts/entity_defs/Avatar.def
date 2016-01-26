@@ -62,6 +62,10 @@
 			<Arg> 	ITEM_ID	</Arg>
 		</dropNotify>
 
+		<errorInfo>
+			<Arg> 	INT32	</Arg>
+		</errorInfo>
+
 	</ClientMethods>
 
 	<BaseMethods>
@@ -89,6 +93,11 @@
         	<Arg> INT32 </Arg>
         	<Arg> INT32 </Arg>
         </swapItemRequest>
+        <equipItemRequest>
+        	<Exposed/>
+        	<Arg> INT32 </Arg>
+        	<Arg> INT32 </Arg>
+        </equipItemRequest>
 
 	</BaseMethods>
 

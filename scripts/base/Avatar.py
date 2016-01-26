@@ -99,3 +99,7 @@ class Avatar(KBEngine.Proxy,
 
 	def swapItemRequest( self, srcIndex, dstIndex):
 		self.inventory.swapItem(srcIndex, dstIndex)
+
+	def equipItemRequest( self, itemIndex, equipIndex):
+		if self.inventory.equipItem(itemIndex, equipIndex) == -1:
+			self.client.errorInfo(4)
