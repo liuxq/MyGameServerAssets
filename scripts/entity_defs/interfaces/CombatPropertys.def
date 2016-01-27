@@ -29,6 +29,33 @@
 			<Flags>			ALL_CLIENTS			</Flags>
 			<Default>		0				</Default>
 		</MP_Max>
+
+		<attack_Max>
+			<Type>			INT32				</Type>
+			<Flags>			OWN_CLIENT			</Flags>
+			<Default>		10				</Default>
+		</attack_Max>
+		<attack_Min>
+			<Type>			INT32				</Type>
+			<Flags>			OWN_CLIENT			</Flags>
+			<Default>		0				</Default>
+		</attack_Min>
+		<defence>
+			<Type>			INT32				</Type>
+			<Flags>			OWN_CLIENT			</Flags>
+			<Default>		0				</Default>
+		</defence>
+		<rating>
+			<Type>			INT32				</Type>
+			<Flags>			OWN_CLIENT			</Flags>
+			<Default>		99				</Default>
+		</rating>
+		<dodge>
+			<Type>			INT32				</Type>
+			<Flags>			OWN_CLIENT			</Flags>
+			<Default>		0				</Default>
+		</dodge>
+
 	</Properties>
 
 	<CellMethods>
