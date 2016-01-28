@@ -172,9 +172,24 @@ class Account(KBEngine.Proxy):
 			return
 			
 		info = self.characters[dbid]
-		avatar.cellData["modelID"] = d_avatar_inittab.datas[info[2]]["modelID"]
-		avatar.cellData["modelScale"] = d_avatar_inittab.datas[info[2]]["modelScale"]
-		avatar.cellData["moveSpeed"] = d_avatar_inittab.datas[info[2]]["moveSpeed"]
+		profesional = info[2]
+		#---------propertys
+		avatar.cellData["exp"] = d_avatar_inittab.datas[profesional]["exp"]
+		avatar.cellData["money"] = d_avatar_inittab.datas[profesional]["money"]
+		avatar.cellData["strength"] = d_avatar_inittab.datas[profesional]["strength"]
+		avatar.cellData["dexterity"] = d_avatar_inittab.datas[profesional]["dexterity"]
+		avatar.cellData["stamina"] = d_avatar_inittab.datas[profesional]["stamina"]
+
+		avatar.cellData["attack_Max"] = avatar.cellData["strength"]*2
+		avatar.cellData["attack_Min"] = avatar.cellData["strength"]*1
+		avatar.cellData["defence"] = int(avatar.cellData["dexterity"]/4)
+		avatar.cellData["rating"] = int(avatar.cellData["dexterity"]/15 + 100)
+		avatar.cellData["dodge"] = int(avatar.cellData["dexterity"]/20 + 100)
+		#---------propertys
+
+		avatar.cellData["modelID"] = d_avatar_inittab.datas[profesional]["modelID"]
+		avatar.cellData["modelScale"] = d_avatar_inittab.datas[profesional]["modelScale"]
+		avatar.cellData["moveSpeed"] = d_avatar_inittab.datas[profesional]["moveSpeed"]
 		avatar.accountEntity = self
 		self.activeAvatar = avatar
 		self.giveClientTo(avatar)

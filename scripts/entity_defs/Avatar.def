@@ -16,6 +16,8 @@
 		<Interface>	Combat			</Interface>
 		<Interface>	Spell			</Interface>
 		<Interface>	Teleport		</Interface>
+		<Interface>	AvatarPropertys	</Interface>
+		
 	</Implements>
 
 	<Properties>

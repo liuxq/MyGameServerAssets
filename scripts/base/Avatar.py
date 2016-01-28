@@ -103,3 +103,6 @@ class Avatar(KBEngine.Proxy,
 	def equipItemRequest( self, itemIndex, equipIndex):
 		if self.inventory.equipItem(itemIndex, equipIndex) == -1:
 			self.client.errorInfo(4)
+		else
+			for key, info in self.equipItemList.items():
+				pass#计算人物属性
