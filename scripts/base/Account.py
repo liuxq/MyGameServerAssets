@@ -59,8 +59,23 @@ class Account(KBEngine.Proxy):
 			"level"				: 1,
 			"spaceUType"		: spaceUType,
 			"direction"			: (0, 0, d_avatar_inittab.datas[roleType]["spawnYaw"]),
-			"position"			: spaceData.get("spawnPos", (0,0,0))
+			"position"			: spaceData.get("spawnPos", (0,0,0)),
+			
+			#---------propertys
+			"exp"				: d_avatar_inittab.datas[roleType]["exp"],
+			"money"				: d_avatar_inittab.datas[roleType]["money"],
+			"strength"			: d_avatar_inittab.datas[roleType]["strength"],
+			"dexterity"			: d_avatar_inittab.datas[roleType]["dexterity"],
+			"stamina"			: d_avatar_inittab.datas[roleType]["stamina"],
+
+			"attack_Max"		: d_avatar_inittab.datas[roleType]["strength"]*2,
+			"attack_Min"		: d_avatar_inittab.datas[roleType]["strength"]*1,
+			"defence"			: int(d_avatar_inittab.datas[roleType]["dexterity"]/4),
+			"rating"			: int(d_avatar_inittab.datas[roleType]["dexterity"]/15+100),
+			"dodge"				: int(d_avatar_inittab.datas[roleType]["dexterity"]/15+100)
+			#---------propertys
 			}
+
 		avatar = KBEngine.createBaseLocally("Avatar",props)
 		if avatar:
 			avatar.writeToDB(self._onAvatarSaved)
@@ -173,19 +188,6 @@ class Account(KBEngine.Proxy):
 			
 		info = self.characters[dbid]
 		profesional = info[2]
-		#---------propertys
-		avatar.cellData["exp"] = d_avatar_inittab.datas[profesional]["exp"]
-		avatar.cellData["money"] = d_avatar_inittab.datas[profesional]["money"]
-		avatar.cellData["strength"] = d_avatar_inittab.datas[profesional]["strength"]
-		avatar.cellData["dexterity"] = d_avatar_inittab.datas[profesional]["dexterity"]
-		avatar.cellData["stamina"] = d_avatar_inittab.datas[profesional]["stamina"]
-
-		avatar.cellData["attack_Max"] = avatar.cellData["strength"]*2
-		avatar.cellData["attack_Min"] = avatar.cellData["strength"]*1
-		avatar.cellData["defence"] = int(avatar.cellData["dexterity"]/4)
-		avatar.cellData["rating"] = int(avatar.cellData["dexterity"]/15 + 100)
-		avatar.cellData["dodge"] = int(avatar.cellData["dexterity"]/20 + 100)
-		#---------propertys
 
 		avatar.cellData["modelID"] = d_avatar_inittab.datas[profesional]["modelID"]
 		avatar.cellData["modelScale"] = d_avatar_inittab.datas[profesional]["modelScale"]

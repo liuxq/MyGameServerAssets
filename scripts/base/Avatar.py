@@ -6,6 +6,9 @@ from interfaces.GameObject import GameObject
 from interfaces.Teleport import Teleport
 from Inventory import InventoryMgr
 
+import d_items
+
+
 class Avatar(KBEngine.Proxy,
 			GameObject,
 			Teleport):
@@ -103,6 +106,10 @@ class Avatar(KBEngine.Proxy,
 	def equipItemRequest( self, itemIndex, equipIndex):
 		if self.inventory.equipItem(itemIndex, equipIndex) == -1:
 			self.client.errorInfo(4)
-		else
+		else:
+			avatarCell = self.cell
+			avatarCell.resetPropertys()
 			for key, info in self.equipItemList.items():
-				pass#计算人物属性
+				itemData = d_items.datas.get(info[1])
+				for itemkey,iteminfo in itemData.items():
+					avatarCell.propertyAddValue(itemkey,iteminfo)

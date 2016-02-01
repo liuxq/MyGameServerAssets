@@ -111,6 +111,14 @@
 		<dropNotify>
 			<Arg> 	ITEM_ID	</Arg>
 		</dropNotify>
+
+		<resetPropertys>
+		</resetPropertys>
+		
+		<propertyAddValue>
+			<Arg> 	UNICODE </Arg>
+			<Arg>	INT32	</Arg>
+		</propertyAddValue>
 	</CellMethods>
 
 </root>

@@ -58,7 +58,18 @@ class Avatar(KBEngine.Entity,
 		
 		e = KBEngine.createEntity("DroppedItem", self.spaceID, tuple(self.position), tuple(self.direction), params)
 
-	
+	def resetPropertys(self):
+			self.attack_Max = self.strength*2
+			self.attack_Min = self.strength*1
+			self.defence = int(self.dexterity/4)
+
+	def propertyAddValue(self, name, value):
+		if 'attack_Max' == name:
+			self.attack_Max += value
+		elif 'attack_Min' == name:
+			self.attack_Min += value
+		elif 'defence' == name:
+			self.defence += value
 
 	#--------------------------------------------------------------------------------------------
 	#                              Callbacks
