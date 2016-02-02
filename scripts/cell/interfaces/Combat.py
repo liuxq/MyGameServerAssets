@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import KBEngine
 import GlobalDefine
+import random
 from KBEDebug import * 
 from interfaces.CombatPropertys import CombatPropertys
 
@@ -54,6 +55,9 @@ class Combat(CombatPropertys):
 		self.onDie(killerID)
 		self.changeState(GlobalDefine.ENTITY_STATE_DEAD)
 		self.onAfterDie(killerID)
+		if self.isMonster():
+			if random.randint(0, 10) == 1:#掉落概率是10
+				self.dropNotify(random.randint(1, 5))
 	
 	def canDie(self, attackerID, skillID, damageType, damage):
 		"""

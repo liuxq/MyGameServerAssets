@@ -32,7 +32,10 @@ class SkillAttack(SkillInitiative):
 		可以对受术者做一些事情了
 		"""
 		if self.getID() == 1:
-			receiver.recvDamage(caster.id, self.getID(), 0, random.randint(0, 10))
+			if caster.isPlayer():
+				receiver.recvDamage(caster.id, self.getID(), 0, random.randint(caster.attack_Min, caster.attack_Max))
+			else:
+				receiver.recvDamage(caster.id, self.getID(), 0, random.randint(0, 10))
 		elif self.getID() == 1000101:
 			#caster.position = caster.getStopPoint(caster.yaw, 15.0)
 			receiver.recvDamage(caster.id, self.getID(), 0, random.randint(0, 100))

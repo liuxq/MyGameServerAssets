@@ -21,6 +21,9 @@
 	</Properties>
 
 	<CellMethods>
+		<dropNotify>
+			<Arg> 	ITEM_ID	</Arg>
+		</dropNotify>
 	</CellMethods>
 </root>
 
