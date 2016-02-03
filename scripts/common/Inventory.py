@@ -10,12 +10,12 @@ class InventoryMgr:
 		self._entity = weakref.proxy(entity)
 		#self._curItemIndex = NOITEM
 		#初始化背包索引index to Uid
-		self.invIndex2Uids = [-1]*12
+		self.invIndex2Uids = [0]*12
 		for key, info in self._entity.itemList.items():
 			self.invIndex2Uids[info[3]] = key
 
 		#初始化装备索引index to Uid
-		self.equipIndex2Uids = [-1]*4
+		self.equipIndex2Uids = [0]*4
 		for key, info in self._entity.equipItemList.items():
 			self.equipIndex2Uids[info[3]] = key
 
@@ -25,7 +25,7 @@ class InventoryMgr:
 
 		emptyIndex = -1
 		for i in range(0,12):
-			if self.invIndex2Uids[i] == -1:
+			if self.invIndex2Uids[i] == 0:
 				emptyIndex = i
 				break
 
@@ -43,7 +43,7 @@ class InventoryMgr:
 	def removeItem(self, itemUUID):
 		itemId = self._entity.itemList[itemUUID][1]
 		itemIndex = self._entity.itemList[itemUUID][3]
-		self.invIndex2Uids[itemIndex] = -1
+		self.invIndex2Uids[itemIndex] = 0
 		del self._entity.itemList[itemUUID]
 		return itemId
 	
@@ -51,10 +51,10 @@ class InventoryMgr:
 		srcUid = self.invIndex2Uids[srcIndex]
 		dstUid = self.invIndex2Uids[dstIndex]
 		self.invIndex2Uids[srcIndex] = dstUid
-		if dstUid != -1:
+		if dstUid != 0:
 			self._entity.itemList[dstUid][3] = srcIndex
 		self.invIndex2Uids[dstIndex] = srcUid
-		if srcUid != -1:
+		if srcUid != 0:
 			self._entity.itemList[srcUid][3] = dstIndex
 
 		#装备或脱下
@@ -62,26 +62,31 @@ class InventoryMgr:
 		invUid = self.invIndex2Uids[itemIndex]
 		equipUid = self.equipIndex2Uids[equipIndex]
 		#背包索引位置没有物品
-		if invUid == -1 and equipUid == -1:
+		if invUid == 0 and equipUid == 0:
 			return -1
 		
 		equipItem = {}
-		if equipUid != -1:
+		if equipUid != 0:
 			equipItem = self._entity.equipItemList[equipUid]
 			del self._entity.equipItemList[equipUid]
-			self.equipIndex2Uids[equipIndex] = -1
+			self.equipIndex2Uids[equipIndex] = 0
 
-		if invUid != -1:
+		if invUid != 0:
 			self._entity.equipItemList[invUid] = self._entity.itemList[invUid]
 			self._entity.equipItemList[invUid][3] = equipIndex
 			self.equipIndex2Uids[equipIndex] = invUid
 			del self._entity.itemList[invUid]
-			self.invIndex2Uids[itemIndex] = -1
+			self.invIndex2Uids[itemIndex] = 0
 
-		if equipUid != -1:
+		if equipUid != 0:
 			self._entity.itemList[equipUid] = equipItem
 			self._entity.itemList[equipUid][3] = itemIndex
 			self.invIndex2Uids[itemIndex] = equipUid
+
+	def getItemUidByIndex(self, itemIndex):
+		return self.invIndex2Uids[itemIndex]
+	def getEquipUidByIndex(self, equipIndex):
+		return self.equipIndex2Uids[equipIndex]
 
 		
 

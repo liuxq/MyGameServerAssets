@@ -57,7 +57,7 @@ class Combat(CombatPropertys):
 		self.onAfterDie(killerID)
 		if self.isMonster():
 			if random.randint(0, 10) == 1:#掉落概率是10
-				self.dropNotify(random.randint(1, 5))
+				self.dropNotify(random.randint(1, 9))
 	
 	def canDie(self, attackerID, skillID, damageType, damage):
 		"""

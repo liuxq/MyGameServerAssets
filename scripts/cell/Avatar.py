@@ -71,6 +71,10 @@ class Avatar(KBEngine.Entity,
 		elif 'defence' == name:
 			self.defence += value
 
+	def equipNotify(self, itemId):
+		self.allClients.equipNotify(itemId)
+
+
 	#--------------------------------------------------------------------------------------------
 	#                              Callbacks
 	#--------------------------------------------------------------------------------------------

@@ -68,6 +68,10 @@
 			<Arg> 	INT32	</Arg>
 		</errorInfo>
 
+		<equipNotify>
+			<Arg> 	ITEM_ID	</Arg>
+		</equipNotify>
+
 	</ClientMethods>
 
 	<BaseMethods>
@@ -119,6 +123,9 @@
 			<Arg> 	UNICODE </Arg>
 			<Arg>	INT32	</Arg>
 		</propertyAddValue>
+		<equipNotify>
+			<Arg> 	ITEM_ID	</Arg>
+		</equipNotify>
 	</CellMethods>
 
 </root>

@@ -90,10 +90,15 @@ class Avatar(KBEngine.Proxy,
 		if self.client:
 			self.client.onReqItemList(self.itemList, self.equipItemList)
 
+			uid = self.inventory.getEquipUidByIndex(0)#取武器栏
+			if uid != 0:#如果存在武器，则通知显示
+				self.cell.equipNotify(self.equipItemList[uid][1])
+
 	def pickUpResponse(self, success, droppedItemID, itemID):
 		if success:
 			itemUUId = self.inventory.addItem(itemID)
-			self.client.pickUpResponse(True, itemID, itemUUId, self.itemList[itemUUId][3])
+			if itemUUId != -1:
+				self.client.pickUpResponse(True, itemID, itemUUId, self.itemList[itemUUId][3])
 
 	def dropRequest( self, itemUUId ):
 
@@ -113,3 +118,11 @@ class Avatar(KBEngine.Proxy,
 				itemData = d_items.datas.get(info[1])
 				for itemkey,iteminfo in itemData.items():
 					avatarCell.propertyAddValue(itemkey,iteminfo)
+
+			if equipIndex == 0:
+				uid = self.inventory.getEquipUidByIndex(equipIndex)
+				if uid == 0:
+					avatarCell.equipNotify(-1)
+				else:
+					avatarCell.equipNotify(self.equipItemList[uid][1])
+				
