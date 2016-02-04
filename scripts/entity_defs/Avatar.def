@@ -41,6 +41,12 @@
 			<Flags> BASE_AND_CLIENT </Flags>
 			<Persistent> true </Persistent>
 		</equipItemList>
+		<equipWeapon>
+			<Type> INT32 </Type>
+			<Flags> ALL_CLIENTS </Flags>
+			<Persistent> true </Persistent>
+			<Default>		-1	</Default>
+		</equipWeapon>
 	</Properties>
 
 	<ClientMethods>
@@ -67,10 +73,6 @@
 		<errorInfo>
 			<Arg> 	INT32	</Arg>
 		</errorInfo>
-
-		<equipNotify>
-			<Arg> 	ITEM_ID	</Arg>
-		</equipNotify>
 
 	</ClientMethods>
 

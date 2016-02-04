@@ -90,10 +90,6 @@ class Avatar(KBEngine.Proxy,
 		if self.client:
 			self.client.onReqItemList(self.itemList, self.equipItemList)
 
-			uid = self.inventory.getEquipUidByIndex(0)#取武器栏
-			if uid != 0:#如果存在武器，则通知显示
-				self.cell.equipNotify(self.equipItemList[uid][1])
-
 	def pickUpResponse(self, success, droppedItemID, itemID):
 		if success:
 			itemUUId = self.inventory.addItem(itemID)

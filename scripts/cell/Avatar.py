@@ -72,7 +72,7 @@ class Avatar(KBEngine.Entity,
 			self.defence += value
 
 	def equipNotify(self, itemId):
-		self.allClients.equipNotify(itemId)
+		self.equipWeapon = itemId
 
 
 	#--------------------------------------------------------------------------------------------
