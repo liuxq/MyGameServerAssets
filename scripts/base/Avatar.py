@@ -121,4 +121,12 @@ class Avatar(KBEngine.Proxy,
 					avatarCell.equipNotify(-1)
 				else:
 					avatarCell.equipNotify(self.equipItemList[uid][1])
+
+	def updatePropertys(self):
+		avatarCell = self.cell
+		avatarCell.resetPropertys()
+		for key, info in self.equipItemList.items():
+			itemData = d_items.datas.get(info[1])
+			for itemkey,iteminfo in itemData.items():
+				avatarCell.propertyAddValue(itemkey,iteminfo)
 				

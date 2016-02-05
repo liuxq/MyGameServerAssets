@@ -106,6 +106,8 @@
         	<Arg> INT32 </Arg>
         	<Arg> INT32 </Arg>
         </equipItemRequest>
+        <updatePropertys>
+        </updatePropertys>
 
 	</BaseMethods>
 

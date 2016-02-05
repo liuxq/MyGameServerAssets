@@ -58,6 +58,9 @@ class Combat(CombatPropertys):
 		if self.isMonster():
 			if random.randint(0, 5) == 1:#掉落概率是10
 				self.dropNotify(random.randint(1, 10))
+			killer.exp += random.randint(1, 10)
+			if killer.exp > killer.level*5+20:
+				killer.upgrade()
 	
 	def canDie(self, attackerID, skillID, damageType, damage):
 		"""
@@ -142,6 +145,10 @@ class Combat(CombatPropertys):
 		"""
 		virtual method.
 		"""
+		self.exp = 0
+		self.strength = 15 + 1*self.level
+		self.dexterity = 10 + 1*self.level
+		self.base.updatePropertys()
 		pass
 		
 	def onDie(self, killerID):

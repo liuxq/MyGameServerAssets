@@ -32,7 +32,6 @@ class SkillAttack(SkillInitiative):
 		可以对受术者做一些事情了
 		"""
 		if self.getID() == 1:
-			ERROR_MSG("damage attackMax=%i defence =%i." % (caster.attack_Max, receiver.defence))
 			damage = random.randint(caster.attack_Min, caster.attack_Max)-receiver.defence
 			if damage < 0:
 				damage = 0

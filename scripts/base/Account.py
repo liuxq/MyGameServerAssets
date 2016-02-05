@@ -62,6 +62,7 @@ class Account(KBEngine.Proxy):
 			"position"			: spaceData.get("spawnPos", (0,0,0)),
 			
 			#---------propertys
+			"level"				: d_avatar_inittab.datas[roleType]["level"],
 			"exp"				: d_avatar_inittab.datas[roleType]["exp"],
 			"money"				: d_avatar_inittab.datas[roleType]["money"],
 			"strength"			: d_avatar_inittab.datas[roleType]["strength"],
