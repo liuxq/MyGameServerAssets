@@ -59,16 +59,14 @@
         	<Arg>   ITEM_INFO_LIST   </Arg>
         </onReqItemList>
 
-        <pickUpResponse>
-        	<Arg>  BOOL </Arg>
-        	<Arg>  ITEM_ID </Arg>
-        	<Arg>  DBID  </Arg>
-        	<Arg>  INT32  </Arg>
-        </pickUpResponse>
+        <pickUp_re>
+        	<Arg>  ITEM_INFO </Arg>
+        </pickUp_re>
 
-        <dropNotify>
+        <dropItem_re>
 			<Arg> 	ITEM_ID	</Arg>
-		</dropNotify>
+			<Arg> 	DBID	</Arg>
+		</dropItem_re>
 
 		<errorInfo>
 			<Arg> 	INT32	</Arg>
@@ -118,6 +116,7 @@
 		</relive>
 		<dropNotify>
 			<Arg> 	ITEM_ID	</Arg>
+			<Arg> 	DBID	</Arg>
 		</dropNotify>
 
 		<resetPropertys>

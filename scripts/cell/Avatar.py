@@ -39,7 +39,7 @@ class Avatar(KBEngine.Entity,
 		"""
 		return True
 
-	def dropNotify(self, itemId):
+	def dropNotify(self, itemId, UUid):
 		datas = d_entities.datas.get(40001003)
 		
 		if datas is None:
@@ -57,6 +57,8 @@ class Avatar(KBEngine.Entity,
 		}
 		
 		e = KBEngine.createEntity("DroppedItem", self.spaceID, tuple(self.position), tuple(self.direction), params)
+		
+		self.client.dropItem_re(itemId, UUid)
 
 	def resetPropertys(self):
 			self.attack_Max = self.strength*2
