@@ -6,6 +6,8 @@ from interfaces.GameObject import GameObject
 from interfaces.Teleport import Teleport
 from Inventory import InventoryMgr
 
+from ITEM_INFO import TItemInfo
+
 import d_items
 
 
@@ -108,6 +110,19 @@ class Avatar(KBEngine.Proxy,
 		if self.inventory.equipItem(itemIndex, equipIndex) == -1:
 			self.client.errorInfo(4)
 		else:
+			#传回去装备和物品信息
+			itemUUId = self.inventory.getItemUidByIndex(itemIndex)
+			equipUUId = self.inventory.getEquipUidByIndex(equipIndex)
+			itemInfo = TItemInfo()
+			itemInfo.extend([0, 0, 0, itemIndex])
+			equipItemInfo = TItemInfo()
+			equipItemInfo.extend([0, 0, 0, equipIndex])
+			if itemUUId != 0:
+				itemInfo = self.itemList[itemUUId]
+			if equipUUId != 0:
+				equipItemInfo = self.equipItemList[equipUUId]
+			self.client.equipItemRequest_re(itemInfo,equipItemInfo)
+			#--------------------
 			avatarCell = self.cell
 			avatarCell.resetPropertys()
 			for key, info in self.equipItemList.items():

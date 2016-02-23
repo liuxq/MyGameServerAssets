@@ -68,6 +68,12 @@
 			<Arg> 	DBID	</Arg>
 		</dropItem_re>
 
+		<equipItemRequest_re>
+        	<Exposed/>
+        	<Arg> ITEM_INFO </Arg>
+        	<Arg> ITEM_INFO </Arg>
+        </equipItemRequest_re>
+
 		<errorInfo>
 			<Arg> 	INT32	</Arg>
 		</errorInfo>
