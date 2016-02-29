@@ -4,7 +4,7 @@ import random
 from KBEDebug import * 
 from skills.base.SkillInitiative import SkillInitiative
 
-class SkillAttack(SkillInitiative):
+class SkillHeal(SkillInitiative):
 	def __init__(self):
 		SkillInitiative.__init__(self)
 
@@ -33,11 +33,9 @@ class SkillAttack(SkillInitiative):
 		"""
 		attack = random.randint(caster.attack_Min, caster.attack_Max)
 		defence = receiver.defence
-		if self.getID() == 1:
-			damage = attack - defence + 10
-		elif self.getID() == 2:
+		if self.getID() == 3:
+			damage = attack + 10
+		elif self.getID() == 4:
 			damage = attack - defence + 30
 
-		if damage < 0:
-				damage = 0
-			receiver.recvDamage(caster.id, self.getID(), 0, damage)
+		receiver.recvDamage(caster.id, self.getID(), 0, -damage)
