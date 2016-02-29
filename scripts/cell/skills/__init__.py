@@ -6,6 +6,7 @@ from KBEDebug import *
 import d_skills
 
 from skills.SkillAttack import SkillAttack
+from skills.SkillHeal import SkillHeal
 
 _g_skills = {}
 

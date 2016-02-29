@@ -39,5 +39,5 @@ class SkillAttack(SkillInitiative):
 			damage = attack - defence + 30
 
 		if damage < 0:
-				damage = 0
-			receiver.recvDamage(caster.id, self.getID(), 0, damage)
+			damage = 0
+		receiver.recvDamage(caster.id, self.getID(), 0, damage)
