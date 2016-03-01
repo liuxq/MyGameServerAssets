@@ -94,9 +94,9 @@ class Avatar(KBEngine.Proxy,
 
 	def pickUpResponse(self, success, droppedItemID, itemID):
 		if success:
-			itemUUId = self.inventory.addItem(itemID)
-			if itemUUId != -1:
-				self.client.pickUp_re(self.itemList[itemUUId])
+			itemUUIdList = self.inventory.addItem(itemID,1)
+			for uuid in itemUUIdList:
+				self.client.pickUp_re(self.itemList[uuid])
 
 	def dropRequest( self, itemUUId ):
 

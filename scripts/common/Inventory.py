@@ -1,7 +1,9 @@
 import weakref
 import KBEngine
 
+import d_items
 from ITEM_INFO import TItemInfo
+
 
 class InventoryMgr:
 	"""docstring for InventoryMgr"""
@@ -19,26 +21,52 @@ class InventoryMgr:
 		for key, info in self._entity.equipItemList.items():
 			self.equipIndex2Uids[info[3]] = key
 
-	def addItem(self, itemId, itemUUID = None):
-		if itemUUID is None:
-			itemUUID = KBEngine.genUUID64()
-
+	def addItem(self, itemId, itemCount = 1):
+		result = []
 		emptyIndex = -1
 		for i in range(0,12):
 			if self.invIndex2Uids[i] == 0:
 				emptyIndex = i
 				break
-
 		#背包已经满了
 		if emptyIndex == -1:
-			return -1
+			return result
+		#放置物品
+		itemStack = d_items.datas[itemId]['itemStack']
+		
+		#不可堆叠物品
+		if itemStack == 1:
+			itemUUID = KBEngine.genUUID64()
+			iteminfo = TItemInfo()
+			iteminfo.extend([itemUUID, itemId, 1, emptyIndex])
+			self.invIndex2Uids[emptyIndex] = itemUUID
+			self._entity.itemList[itemUUID] = iteminfo
+			result.append(itemUUID)
+			
+		#可堆叠物品
+		else:
+			
+			for key, info in self._entity.itemList.items():
+				if info[1] == itemId and info[2] < itemStack:
+					info[2] += itemCount
+					result.append(key)
+					if info[2] > itemStack:
+						itemCount = info[2]-itemStack
+						info[2] = itemStack
+					else:
+						itemCount = 0
+						break
 
-		iteminfo = TItemInfo()
-		iteminfo.extend([itemUUID, itemId, 1, emptyIndex])
-		self.invIndex2Uids[emptyIndex] = itemUUID
+			if itemCount > 0:
+				itemUUID = KBEngine.genUUID64()
+				iteminfo = TItemInfo()
+				iteminfo.extend([itemUUID, itemId, 1, emptyIndex])
+				self.invIndex2Uids[emptyIndex] = itemUUID
+				self._entity.itemList[itemUUID] = iteminfo
+				result.append(itemUUID)
 
-		self._entity.itemList[itemUUID] = iteminfo
-		return itemUUID
+		return result
+		
 
 	def removeItem(self, itemUUID):
 		itemId = self._entity.itemList[itemUUID][1]
