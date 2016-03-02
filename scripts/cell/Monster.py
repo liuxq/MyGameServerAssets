@@ -53,7 +53,7 @@ class Monster(KBEngine.Entity,
 		"""
 		return True
 
-	def dropNotify(self, itemId):
+	def dropNotify(self, itemId, itemCount):
 		datas = d_entities.datas.get(40001003)
 		
 		if datas is None:
@@ -68,6 +68,7 @@ class Monster(KBEngine.Entity,
 			"name" : datas["name"],
 			"descr" : datas.get("descr", ''),
 			"itemId" : itemId,
+			"itemCount" : itemCount,
 		}
 		
 		e = KBEngine.createEntity("DroppedItem", self.spaceID, tuple(self.position), tuple(self.direction), params)

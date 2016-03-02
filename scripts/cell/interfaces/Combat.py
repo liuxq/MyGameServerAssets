@@ -56,8 +56,8 @@ class Combat(CombatPropertys):
 		self.changeState(GlobalDefine.ENTITY_STATE_DEAD)
 		self.onAfterDie(killerID)
 		if self.isMonster():
-			if random.randint(0, 5) == 1:#掉落概率是10
-				self.dropNotify(random.randint(1, 10))
+			if random.randint(0, 4) == 1:#掉落概率是10
+				self.dropNotify(random.randint(1, 11),1)
 			killer.exp += random.randint(1, 10)
 			if killer.exp > killer.level*5+20:
 				killer.upgrade()

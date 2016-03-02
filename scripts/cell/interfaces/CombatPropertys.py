@@ -29,6 +29,8 @@ class CombatPropertys:
 		v = self.HP + int(val)
 		if v < 0:
 			v = 0
+		if v > self.HP_Max:
+			v = self.HP_Max
 			
 		if self.HP == v:
 			return
@@ -42,11 +44,40 @@ class CombatPropertys:
 		v = self.MP + int(val)
 		if v < 0:
 			v = 0
+		if v > self.MP_Max:
+			v = self.MP_Max
 			
 		if self.MP == v:
 			return
 			
 		self.MP = v
+
+	def addDefence(self, val):
+		v = self.defence + int(val)
+		if v < 0:
+			v = 0
+		
+		if self.defence == v:
+			return
+		self.defence = v
+
+	def addAttack_Max(self, val):
+		v = self.attack_Max + int(val)
+		if v < 0:
+			v = 0
+		
+		if self.attack_Max == v:
+			return
+		self.attack_Max = v
+
+	def addAttack_Min(self, val):
+		v = self.attack_Min + int(val)
+		if v < 0:
+			v = 0
+		
+		if self.attack_Min == v:
+			return
+		self.attack_Min = v
 		
 	def setHP(self, hp):
 		"""

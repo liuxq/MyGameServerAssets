@@ -39,7 +39,7 @@ class Avatar(KBEngine.Entity,
 		"""
 		return True
 
-	def dropNotify(self, itemId, UUid):
+	def dropNotify(self, itemId, UUid, itemCount):
 		datas = d_entities.datas.get(40001003)
 		
 		if datas is None:
@@ -54,6 +54,7 @@ class Avatar(KBEngine.Entity,
 			"name" : datas["name"],
 			"descr" : datas.get("descr", ''),
 			"itemId" : itemId,
+			"itemCount" : itemCount,
 		}
 		
 		e = KBEngine.createEntity("DroppedItem", self.spaceID, tuple(self.position), tuple(self.direction), params)

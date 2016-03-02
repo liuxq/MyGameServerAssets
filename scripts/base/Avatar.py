@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import KBEngine
 import time
+
 from KBEDebug import *
 from interfaces.GameObject import GameObject
 from interfaces.Teleport import Teleport
@@ -8,8 +9,7 @@ from Inventory import InventoryMgr
 
 from ITEM_INFO import TItemInfo
 
-import d_items
-
+import items
 
 class Avatar(KBEngine.Proxy,
 			GameObject,
@@ -92,16 +92,16 @@ class Avatar(KBEngine.Proxy,
 		if self.client:
 			self.client.onReqItemList(self.itemList, self.equipItemList)
 
-	def pickUpResponse(self, success, droppedItemID, itemID):
+	def pickUpResponse(self, success, droppedItemID, itemID, itemCount):
 		if success:
-			itemUUIdList = self.inventory.addItem(itemID,1)
+			itemUUIdList = self.inventory.addItem(itemID,itemCount)
 			for uuid in itemUUIdList:
 				self.client.pickUp_re(self.itemList[uuid])
 
 	def dropRequest( self, itemUUId ):
-
-		itemId = self.inventory.removeItem( itemUUId )
-		self.cell.dropNotify( itemId, itemUUId )
+		itemCount = self.itemList[itemUUId][2]
+		itemId = self.inventory.removeItem( itemUUId, itemCount)
+		self.cell.dropNotify( itemId, itemUUId , itemCount)
 
 	def swapItemRequest( self, srcIndex, dstIndex):
 		self.inventory.swapItem(srcIndex, dstIndex)
@@ -126,9 +126,7 @@ class Avatar(KBEngine.Proxy,
 			avatarCell = self.cell
 			avatarCell.resetPropertys()
 			for key, info in self.equipItemList.items():
-				itemData = d_items.datas.get(info[1])
-				for itemkey,iteminfo in itemData.items():
-					avatarCell.propertyAddValue(itemkey,iteminfo)
+				items.getItem(info[1]).use(self)
 
 			if equipIndex == 0:
 				uid = self.inventory.getEquipUidByIndex(equipIndex)
@@ -141,7 +139,16 @@ class Avatar(KBEngine.Proxy,
 		avatarCell = self.cell
 		avatarCell.resetPropertys()
 		for key, info in self.equipItemList.items():
-			itemData = d_items.datas.get(info[1])
-			for itemkey,iteminfo in itemData.items():
-				avatarCell.propertyAddValue(itemkey,iteminfo)
+			items.getItem(info[1]).use(self)
+			
 				
+	def useItemRequest(self, itemIndex):
+		itemUUId = self.inventory.getItemUidByIndex(itemIndex)
+		item = items.getItem(self.itemList[itemUUId][1])
+		item.use(self)
+		itemCount = self.itemList[itemUUId][2]
+		itemId = self.inventory.removeItem( itemUUId, 1 )
+		if itemId == -1:#只是减少物品数量，并没有销毁
+			self.client.pickUp_re(self.itemList[itemUUId])
+		else:#销毁物品
+			self.client.dropItem_re( itemId, itemUUId)

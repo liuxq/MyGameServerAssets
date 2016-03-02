@@ -95,6 +95,7 @@
         	<Arg>  BOOL </Arg>
         	<Arg>  ENTITY_ID </Arg>
         	<Arg>  ITEM_ID  </Arg>
+        	<Arg>  UINT32  </Arg>
         </pickUpResponse>
         <dropRequest>
         	<Exposed/>
@@ -112,6 +113,10 @@
         </equipItemRequest>
         <updatePropertys>
         </updatePropertys>
+        <useItemRequest>
+        	<Exposed/>
+        	<Arg> INT32 </Arg>
+        </useItemRequest>
 
 	</BaseMethods>
 
@@ -123,6 +128,7 @@
 		<dropNotify>
 			<Arg> 	ITEM_ID	</Arg>
 			<Arg> 	DBID	</Arg>
+			<Arg> 	UINT32	</Arg>
 		</dropNotify>
 
 		<resetPropertys>

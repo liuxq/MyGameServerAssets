@@ -72,6 +72,18 @@
 			<Arg>			MP				</Arg>
 		</addMP>
 
+		<addDefence>
+			<Arg>			INT32				</Arg>
+		</addDefence>
+
+		<addAttack_Max>
+			<Arg>			INT32				</Arg>
+		</addAttack_Max>
+
+		<addAttack_Min>
+			<Arg>			INT32				</Arg>
+		</addAttack_Min>
+
 		<setHP>
 			<Arg>			HP				</Arg>
 		</setHP>

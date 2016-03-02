@@ -17,6 +17,12 @@
 			<Default>		0			</Default>
 			<Persistent>	true			</Persistent>
 		</itemId>
+		<itemCount>
+			<Type>			UINT32			</Type>
+			<Flags>			ALL_CLIENTS		</Flags>
+			<Default>		0			</Default>
+			<Persistent>	true			</Persistent>
+		</itemCount>
 	</Properties>
 
 	<BaseMethods>

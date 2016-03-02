@@ -2,6 +2,8 @@
 import KBEngine
 import Watcher
 import d_spaces
+
+import items
 from KBEDebug import *
 
 def onBaseAppReady(isBootstrap):
@@ -82,6 +84,8 @@ def onInit(isReload):
 	@type isReload: bool
 	"""
 	INFO_MSG('onInit::isReload:%s' % isReload)
+
+	items.onInit()
 
 def onFini():
 	"""

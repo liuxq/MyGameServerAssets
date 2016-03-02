@@ -1,5 +1,6 @@
 import weakref
 import KBEngine
+from KBEDebug import *
 
 import d_items
 from ITEM_INFO import TItemInfo
@@ -45,7 +46,6 @@ class InventoryMgr:
 			
 		#可堆叠物品
 		else:
-			
 			for key, info in self._entity.itemList.items():
 				if info[1] == itemId and info[2] < itemStack:
 					info[2] += itemCount
@@ -60,7 +60,7 @@ class InventoryMgr:
 			if itemCount > 0:
 				itemUUID = KBEngine.genUUID64()
 				iteminfo = TItemInfo()
-				iteminfo.extend([itemUUID, itemId, 1, emptyIndex])
+				iteminfo.extend([itemUUID, itemId, itemCount, emptyIndex])
 				self.invIndex2Uids[emptyIndex] = itemUUID
 				self._entity.itemList[itemUUID] = iteminfo
 				result.append(itemUUID)
@@ -68,11 +68,16 @@ class InventoryMgr:
 		return result
 		
 
-	def removeItem(self, itemUUID):
+	def removeItem(self, itemUUID, itemCount):
 		itemId = self._entity.itemList[itemUUID][1]
+		itemC = self._entity.itemList[itemUUID][2]
 		itemIndex = self._entity.itemList[itemUUID][3]
-		self.invIndex2Uids[itemIndex] = 0
-		del self._entity.itemList[itemUUID]
+		if itemCount < itemC:
+			self._entity.itemList[itemUUID][2] = itemC - itemCount
+			return -1
+		else:
+			self.invIndex2Uids[itemIndex] = 0
+			del self._entity.itemList[itemUUID]
 		return itemId
 	
 	def swapItem(self, srcIndex, dstIndex):

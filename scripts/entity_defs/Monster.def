@@ -23,6 +23,7 @@
 	<CellMethods>
 		<dropNotify>
 			<Arg> 	ITEM_ID	</Arg>
+			<Arg> 	UINT32	</Arg>
 		</dropNotify>
 	</CellMethods>
 </root>

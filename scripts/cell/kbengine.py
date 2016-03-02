@@ -3,6 +3,7 @@ import KBEngine
 from KBEDebug import *
 import skills
 
+
 def onInit(isReload):
 	"""
 	KBEngine method.
