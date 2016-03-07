@@ -9,8 +9,8 @@ class iDFunction:
 	def __init__(self, args):
 		pass
 
-	def valid(self, avatar, args):
+	def valid(self, avatar, talker):
 		return True
 
-	def do(self, avatar, args):
+	def do(self, avatar, talker):
 		return True

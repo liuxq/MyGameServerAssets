@@ -21,9 +21,9 @@ class DFTeleport(iDFunction):
 		self.position = param1
 		self.yaw = int(args[2])
 		
-	def valid(self, avatar, args):
+	def valid(self, avatar, talker):
 		return True
 
-	def do(self, avatar, args):
+	def do(self, avatar, talker):
 		avatar.teleportSpace(self.spaceType, tuple(self.position), (0, 0, self.yaw), {})
 		return True
