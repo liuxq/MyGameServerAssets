@@ -57,7 +57,11 @@ class Combat(CombatPropertys):
 		self.onAfterDie(killerID)
 		if self.isMonster():
 			if random.randint(0, 1) == 1:#掉落概率是10
+<<<<<<< HEAD
 				self.dropNotify(11,1)#(random.randint(1, 11),1)
+=======
+				self.dropNotify(11,3)#(random.randint(1, 11),1)
+>>>>>>> d8f93ec982c0abf37db214a8f49061c6ecd95445
 			killer.exp += random.randint(1, 10)
 			if killer.exp > killer.level*5+20:
 				killer.upgrade()
