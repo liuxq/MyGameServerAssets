@@ -12,21 +12,15 @@
 	</CellMethods>
 
 	<ClientMethods>
-		<dialog_addOption>
-			<Utype> 10101			</Utype>
-			<Arg>	UINT8			</Arg>
-			<Arg>	UINT32			</Arg>
+		<dialog_setContent>
+			<Utype> 10101						</Utype>
+			<Arg>	INT32 						</Arg>
+			<Arg>	ARRAY <of> 	UINT32 </of>	</Arg>
+			<Arg>	ARRAY <of>  UNICODE </of>	</Arg>
 			<Arg>	UNICODE			</Arg>
-			<Arg>	INT32			</Arg>
-		</dialog_addOption>
-
-		<dialog_setText>
-			<Utype> 10102			</Utype>
 			<Arg>	UNICODE			</Arg>
-			<Arg>	BOOL			</Arg>
-			<Arg>	UINT32			</Arg>
 			<Arg>	UNICODE			</Arg>
-		</dialog_setText>
+		</dialog_setContent>
 
 		<dialog_close>
 			<Utype> 10104			</Utype>

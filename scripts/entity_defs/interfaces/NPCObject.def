@@ -20,6 +20,12 @@
 			<Flags>			ALL_CLIENTS		</Flags>
 			<Default>		0			</Default>
 		</entityNO>
+
+		<dialogID>
+			<Type>			UINT32		 	</Type>
+			<Flags>			ALL_CLIENTS		</Flags>
+			<Default>		0				</Default>
+		</dialogID>
 	</Properties>
 
 	<BaseMethods>

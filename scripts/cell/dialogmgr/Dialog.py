@@ -72,10 +72,14 @@ class Dialog:
 			return
 			
 		# 列出菜单
+		dialogIds = [];
+		dialogTittles = [];
 		for mkey in self.__menus:
 			dialog = Dialog.c_dialogMgr.getDialog(mkey)
 			if dialog.canTalk(avatar, talker):
-				avatar.client.dialog_addOption(GlobalDefine.DIALOG_TYPE_NORMAL, dialog.getKey(), dialog.getTitle(), 0)
+				dialogIds.append(dialog.getKey())
+				dialogTittles.append(dialog.getTitle())
+				#avatar.client.dialog_addOption(GlobalDefine.DIALOG_TYPE_NORMAL, dialog.getKey(), dialog.getTitle(), 0)
 
 		# 显示主内容
-		avatar.client.dialog_setText(self.getBody(), self.__isplayer, self.__headID, self.__sayname)
+		avatar.client.dialog_setContent(talker.id, dialogIds, dialogTittles, self.getTitle(), self.getBody(), self.__sayname)
