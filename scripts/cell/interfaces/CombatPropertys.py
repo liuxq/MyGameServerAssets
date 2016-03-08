@@ -9,8 +9,8 @@ class CombatPropertys:
 	完善的话可以根据策划excel表来直接生成这个模块
 	"""
 	def __init__(self):
-		self.HP_Max = 100
-		self.MP_Max = 100
+		#self.HP_Max = 100
+		#self.MP_Max = 100
 		
 		# 非死亡状态才需要补满
 		if not self.isState(GlobalDefine.ENTITY_STATE_DEAD) and self.HP == 0 and self.MP == 0:

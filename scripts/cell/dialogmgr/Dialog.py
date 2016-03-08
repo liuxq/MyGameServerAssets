@@ -24,12 +24,12 @@ class Dialog:
 		self.__funcs = {}
 		
 		for idx in range(5):
-			menu = datas.get("menu%i" % (idx + 1))
+			menu = datas.get("menu%i" % (idx + 1), 0)
 			if menu > 0:
 				self.__menus.append(menu)
 				assert menu != self.__key
 					
-			func = datas.get("func%i" % (idx + 1))
+			func = datas.get("func%i" % (idx + 1), '')
 			if len(func) <= 0:
 				continue
 			

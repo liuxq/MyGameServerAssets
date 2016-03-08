@@ -51,7 +51,7 @@ class Spell:
 		scobject = SCObject.createSCEntity(target)
 		ret = skill.canUse(self, scobject)
 		if ret != GlobalConst.GC_OK:
-			ERROR_MSG("Spell::spellTarget(%i): cannot spell skillID=%i, targetID=%i, code=%i" % (self.id, skillID, targetID, ret))
+			DEBUG_MSG("Spell::spellTarget(%i): cannot spell skillID=%i, targetID=%i, code=%i" % (self.id, skillID, targetID, ret))
 			return
 			
 		skill.use(self, scobject)

@@ -27,14 +27,16 @@ class Avatar(KBEngine.Entity,
 		State.__init__(self) 
 		Motion.__init__(self) 
 		SkillBox.__init__(self) 
-		Combat.__init__(self) 
 		Spell.__init__(self) 
 		Teleport.__init__(self) 
 		Dialog.__init__(self) 
+		self.resetPropertys()
+		Combat.__init__(self) 
 		
 		# 设置每秒允许的最快速度, 超速会被拉回去
 		self.topSpeed = self.moveSpeed + 5.0
 		# self.topSpeedY = 10.0
+
 			
 	def isPlayer(self):
 		"""
@@ -65,17 +67,10 @@ class Avatar(KBEngine.Entity,
 		self.client.dropItem_re(itemId, UUid)
 
 	def resetPropertys(self):
-			self.attack_Max = self.strength*2
-			self.attack_Min = self.strength*1
-			self.defence = int(self.dexterity/4)
-
-	def propertyAddValue(self, name, value):
-		if 'attack_Max' == name:
-			self.attack_Max += value
-		elif 'attack_Min' == name:
-			self.attack_Min += value
-		elif 'defence' == name:
-			self.defence += value
+		self.attack_Max = self.strength*2
+		self.attack_Min = self.strength*1
+		self.defence = int(self.dexterity/4)
+		self.HP_Max = self.stamina*10
 
 	def equipNotify(self, itemId):
 		self.equipWeapon = itemId

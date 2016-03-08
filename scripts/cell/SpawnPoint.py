@@ -33,6 +33,7 @@ class SpawnPoint(KBEngine.Entity, GameObject):
 			"defence" : datas.get("defence",10),
 			"rating" : datas.get("rating",100),
 			"dodge" : datas.get("dodge",100),
+			"HP_Max" : datas.get("HP_Max",200),
 		}
 		
 		e = KBEngine.createEntity(datas["entityType"], self.spaceID, tuple(self.position), tuple(self.direction), params)

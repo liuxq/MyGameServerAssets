@@ -169,7 +169,7 @@ class AI:
 		else:
 			self.resetSpeed()
 			
-			skillID = 1
+			skillID = 4
 			if dragon:
 				skillID = 7000101
 

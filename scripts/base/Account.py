@@ -75,7 +75,8 @@ class Account(KBEngine.Proxy):
 			"attack_Min"		: d_avatar_inittab.datas[roleType]["strength"]*1,
 			"defence"			: int(d_avatar_inittab.datas[roleType]["dexterity"]/4),
 			"rating"			: int(d_avatar_inittab.datas[roleType]["dexterity"]/15+100),
-			"dodge"				: int(d_avatar_inittab.datas[roleType]["dexterity"]/15+100)
+			"dodge"				: int(d_avatar_inittab.datas[roleType]["dexterity"]/15+100),
+			"HP_Max"            : 10,
 			#---------propertys
 			}
 

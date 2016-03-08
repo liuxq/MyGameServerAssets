@@ -4,6 +4,7 @@ import GlobalDefine
 import random
 from KBEDebug import * 
 from interfaces.CombatPropertys import CombatPropertys
+import d_avatar_inittab
 
 class Combat(CombatPropertys):
 	"""
@@ -56,7 +57,7 @@ class Combat(CombatPropertys):
 		self.changeState(GlobalDefine.ENTITY_STATE_DEAD)
 		self.onAfterDie(killerID)
 		if self.isMonster():
-			if random.randint(0, 3) == 1:#掉落概率是10
+			if random.randint(0, 10) == 1:#掉落概率是10
 				self.dropNotify(random.randint(1, 11),1)
 			killer.exp += random.randint(1, 10)
 			if killer.exp > killer.level*5+20:
@@ -146,8 +147,15 @@ class Combat(CombatPropertys):
 		virtual method.
 		"""
 		self.exp = 0
-		self.strength = 15 + 1*self.level
-		self.dexterity = 10 + 1*self.level
+		if self.roleTypeCell == 1:#战士
+			self.strength = d_avatar_inittab.datas[self.roleTypeCell]["strength"] + 1*self.level
+			self.dexterity = d_avatar_inittab.datas[self.roleTypeCell]["dexterity"] + 2*self.level
+			self.stamina = d_avatar_inittab.datas[self.roleTypeCell]["stamina"] + 4*self.level
+
+		else:				#法师
+			self.strength = d_avatar_inittab.datas[self.roleTypeCell]["strength"] + 2*self.level
+			self.dexterity = d_avatar_inittab.datas[self.roleTypeCell]["dexterity"] + 1*self.level
+			self.stamina = d_avatar_inittab.datas[self.roleTypeCell]["stamina"] + 1*self.level
 		self.base.updatePropertys()
 		pass
 		
