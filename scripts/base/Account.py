@@ -61,6 +61,8 @@ class Account(KBEngine.Proxy):
 			"direction"			: (0, 0, d_avatar_inittab.datas[roleType]["spawnYaw"]),
 			"position"			: spaceData.get("spawnPos", (0,0,0)),
 			
+			#----------cell---------
+			"roleTypeCell"      : roleType,
 			#---------propertys
 			"level"				: d_avatar_inittab.datas[roleType]["level"],
 			"exp"				: d_avatar_inittab.datas[roleType]["exp"],

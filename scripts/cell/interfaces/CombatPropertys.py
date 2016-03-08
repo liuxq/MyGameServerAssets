@@ -86,6 +86,8 @@ class CombatPropertys:
 		hp = int(hp)
 		if hp < 0:
 			hp = 0
+		if hp > self.HP_Max:
+			hp = self.HP_Max
 		
 		if self.HP == hp:
 			return
@@ -99,7 +101,8 @@ class CombatPropertys:
 		hp = int(mp)
 		if mp < 0:
 			mp = 0
-
+		if mp > self.MP_Max:
+			mp = self.MP_Max
 		if self.MP == mp:
 			return
 			

@@ -35,7 +35,5 @@ class SkillHeal(SkillInitiative):
 		defence = receiver.defence
 		if self.getID() == 3:
 			damage = attack + 10
-		elif self.getID() == 4:
-			damage = attack - defence + 30
 
 		receiver.recvDamage(caster.id, self.getID(), 0, -damage)

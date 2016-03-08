@@ -27,6 +27,11 @@
 			<Flags> BASE </Flags>
 			<Persistent> true </Persistent>
 		</roleType>
+		<roleTypeCell>
+			<Type> UINT8 </Type>
+			<Flags> ALL_CLIENTS </Flags>
+			<Persistent> true </Persistent>
+		</roleTypeCell>
 		<level>
 			<Type> UINT16 </Type>
 			<Flags> CELL_PUBLIC_AND_OWN </Flags>

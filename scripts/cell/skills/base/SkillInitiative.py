@@ -2,6 +2,7 @@
 import KBEngine
 import random
 import GlobalConst
+import GlobalDefine
 from KBEDebug import * 
 from skillbases.SObject import SObject
 from skillbases.SCObject import SCObject
@@ -75,6 +76,9 @@ class SkillInitiative(SObject):
 		@param caster: 使用技能者
 		@param receiver: 受技能影响者
 		"""
+		if scObject.getObject().state == GlobalDefine.ENTITY_STATE_DEAD:
+			return GlobalConst.GC_SKILL_ENTITY_DEAD
+
 		return GlobalConst.GC_OK
 		
 	def use(self, caster, scObject):
