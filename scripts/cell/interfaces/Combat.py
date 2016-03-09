@@ -165,6 +165,9 @@ class Combat(CombatPropertys):
 		"""
 		self.setHP(0)
 		self.setMP(0)
+		if self.isPlayer() and self.level > 1:
+			self.level -= 1
+			self.onLevelChanged(self.level)
 
 	def onBeforeDie(self, killerID):
 		"""
