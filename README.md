@@ -1,6 +1,7 @@
 这是一个KBEngine服务端资产库
 ========
-
+是我的testgame的服务器脚本代码，用的是kbengine0.7.0的版本
+感谢kbe大神哈https://github.com/kbengine/kbengine
 ##启动服务端
 
 使用固定参数来启动：(参数的意义:http://www.kbengine.org/cn/docs/startup_shutdown.html)
