@@ -5,7 +5,7 @@ from KBEDebug import *
 
 class Motion:
 	def __init__(self):
-		self.set_moveSpeed(0)
+		self.set_moveSpeed(10)
 
 	def onMove(self, controllerId, userarg):
 		"""

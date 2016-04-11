@@ -63,7 +63,21 @@ class Avatar(KBEngine.Entity,
 		玩家跳跃
 		"""
 		pass
-		
+#####测试用，不实现##################################
+	def ReceiveChatMessage(self, str):
+		DEBUG_MSG("ReceiveChatMessage:%s" % (str))
+
+	def onReqItemList(itemList, equipList):
+		pass
+
+	def pickUp_re(item_info):
+		pass
+	def dropItem_re(itemId, dbid):
+		pass
+	def equipItemRequest_re(item_info, item_info2):
+		pass
+	def errorInfo(errorCode):
+		pass
 		
 class PlayerAvatar(Avatar):
 	def __init__(self):
@@ -104,4 +118,7 @@ class PlayerAvatar(Avatar):
 	def updateMove(self):
 		#DEBUG_MSG("%s::updateMove: %i" % (self.__class__.__name__, self.id))
 		KBEngine.callback(1, self.updateMove)
-		self.moveToPoint( self.calcRandomWalkPosition(), self.velocity, 0.0, 0, True, True )
+		self.moveToPoint( self.calcRandomWalkPosition(), 10, 0.0, 0, True, True )
+
+
+
