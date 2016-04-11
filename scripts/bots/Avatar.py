@@ -118,7 +118,7 @@ class PlayerAvatar(Avatar):
 	def updateMove(self):
 		#DEBUG_MSG("%s::updateMove: %i" % (self.__class__.__name__, self.id))
 		KBEngine.callback(1, self.updateMove)
-		self.moveToPoint( self.calcRandomWalkPosition(), 10, 0.0, 0, True, True )
+		self.moveToPoint( self.calcRandomWalkPosition(), self.velocity, 0.0, 0, True, True )
 
 
 
