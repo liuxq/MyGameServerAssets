@@ -36,7 +36,6 @@ class Motion:
 			# 移动半径距离在30米内
 			if self.canNavigate():
 				destPos = self.getRandomPoints(basePos, 30.0, 1, 0)
-				
 				if len(destPos) == 0:
 					self.nextMoveTime = int(time.time() + random.randint(5, 15))
 					return False

@@ -23,7 +23,7 @@
             </auth>
             <!-- 账号系统
             (Account system)
-        -->
+            -->
             <account_system>
                 <account_registration> 
                     <!-- 是否开放注册 
@@ -43,15 +43,16 @@
         </cellapp>
         
         <baseapp>
-                <backupPeriod> 500 </backupPeriod>
-                <!-- Ç¿ÖÆÖ¸¶¨Íâ²¿IPµØÖ·»òÕßÓòÃû£¬ÔÚÄ³Ð©ÍøÂç»·¾³ÏÂ£¬¿ÉÄÜ»áÊ¹ÓÃ¶Ë¿ÚÓ³ÉäµÄ·½Ê½À´·ÃÎÊ¾ÖÓòÍøÄÚ²¿µÄKBE·þÎñÆ÷£¬ÄÇÃ´KBEÔÚµ±Ç°
-                        µÄ»úÆ÷ÉÏ»ñµÃµÄÍâ²¿µØÖ·ÊÇ¾ÖÓòÍøµØÖ·£¬´ËÊ±Ä³Ð©¹¦ÄÜ½«»á²»Õý³£¡£ÀýÈç£ºÕËºÅ¼¤»îÓÊ¼þÖÐ¸ø³öµÄ»Øµ÷µØÖ·, µÇÂ¼baseapp¡£
-                        ×¢Òâ£º·þÎñ¶Ë²¢²»»á¼ì²éÕâ¸öµØÖ·µÄ¿ÉÓÃÐÔ£¬ÒòÎªÎÞ·¨¼ì²é¡£
-                        (Forced to specify an external IP-address or Domain-name, In some server environment, May use the port mapping to access KBE,
-                        So KBE on current machines on the external IP address may be a LAN IP address, Then some functions will not normal.
-                        For example: account activation email address given callback.
-                        Note: the availability of server does not check the address, because cannot check)
-                -->
+		<!-- 自动存档的时间周期(秒)
+			（Automatic archiving time period(secs)） 
+		-->
+		<archivePeriod> 300 </archivePeriod> 							<!-- Type: Float -->
+		
+		<!-- 自动备份的时间(秒)
+			（Automatic backup time period(secs)） 
+		-->
+		<backupPeriod> 300 </backupPeriod>
+
                 <externalAddress> </externalAddress>                                                        <!-- Type: String -->
         </baseapp>
         
@@ -62,14 +63,7 @@
         </baseappmgr>
         
         <loginapp>
-                <!-- Ç¿ÖÆÖ¸¶¨Íâ²¿IPµØÖ·»òÕßÓòÃû£¬ÔÚÄ³Ð©ÍøÂç»·¾³ÏÂ£¬¿ÉÄÜ»áÊ¹ÓÃ¶Ë¿ÚÓ³ÉäµÄ·½Ê½À´·ÃÎÊ¾ÖÓòÍøÄÚ²¿µÄKBE·þÎñÆ÷£¬ÄÇÃ´KBEÔÚµ±Ç°
-                        µÄ»úÆ÷ÉÏ»ñµÃµÄÍâ²¿µØÖ·ÊÇ¾ÖÓòÍøµØÖ·£¬´ËÊ±Ä³Ð©¹¦ÄÜ½«»á²»Õý³£¡£ÀýÈç£ºÕËºÅ¼¤»îÓÊ¼þÖÐ¸ø³öµÄ»Øµ÷µØÖ·, µÇÂ¼baseapp¡£
-                        ×¢Òâ£º·þÎñ¶Ë²¢²»»á¼ì²éÕâ¸öµØÖ·µÄ¿ÉÓÃÐÔ£¬ÒòÎªÎÞ·¨¼ì²é¡£
-                        (Forced to specify an external IP-address or Domain-name, In some server environment, May use the port mapping to access KBE,
-                        So KBE on current machines on the external IP address may be a LAN IP address, Then some functions will not normal.
-                        For example: account activation email address given callback.
-                        Note: the availability of server does not check the address, because cannot check)
-                -->
+
                 <externalAddress> </externalAddress>                                                        <!-- Type: String -->
         </loginapp>        
         
@@ -77,22 +71,6 @@
         </machine>
         
         <bots>
-            <!-- 脚本入口模块， 相当于main函数 
-                (Entry module, like the main-function)
-            -->
-            <entryScriptFile> kbengine </entryScriptFile>
-                
-            <!-- 指定接口地址，可配置网卡名、MAC、IP
-                （Interface address specified, configurable NIC/MAC/IP） 
-            -->
-            <internalInterface>  </internalInterface>
-            
-            <!-- loginapp地址 
-                （loginapp address)
-            -->
-            <host> localhost </host>                                        <!-- Type: String -->
-            <port> 20013 </port>                                            <!-- Type: Integer -->
-            
             
             <!-- 默认启动进程后自动添加这么多个机器人 
                 (After starting the process, automatically add some robots)

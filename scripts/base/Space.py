@@ -34,9 +34,7 @@ class Space(KBEngine.Base, GameObject):
 	def createSpawnPointDatas(self):
 		"""
 		"""
-
-		res = r"scripts\data\spawnpoints\%s_spawnpoints.xml" % self.spaceResName
-		
+		res = r"scripts\data\spawnpoints\%s_spawnpoints.xml" % (self.spaceResName.replace("\\", "/").split("/")[-1])
 		if(len(self.spaceResName) == 0 or not KBEngine.hasRes(res)):
 			return
 			
