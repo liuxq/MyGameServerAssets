@@ -46,13 +46,24 @@ class Space(KBEngine.Base, GameObject):
 		DEBUG_MSG("Space::createSpawnPointDatas: %s" % (res))
 		
 		for child in root:
-			position = child[0][0]
-			direction = child[0][1]
+			positionNode = child[0][0]
+			directionNode = child[0][1]
 			scaleNode = child[0][2]
+			
 			scale = int(((float(scaleNode[0].text) + float(scaleNode[1].text) + float(scaleNode[2].text)) / 3.0) * 10)
+			position = (float(positionNode[0].text), float(positionNode[1].text), float(positionNode[2].text))
+			direction = [float(directionNode[0].text) / 360 * (math.pi * 2), float(directionNode[1].text) / 360 * (math.pi * 2), float(directionNode[2].text) / 360 * (math.pi * 2)]
+			
+			if direction[0] - math.pi > 0.0:
+				direction[0] -= math.pi * 2
+			if direction[1] - math.pi > 0.0:
+				direction[1] -= math.pi * 2
+			if direction[2] - math.pi > 0.0:
+				direction[2] -= math.pi * 2
+				
 			self.tmpCreateEntityDatas.append([int(child.attrib['name']), \
-			(float(position[0].text), float(position[1].text), float(position[2].text)), \
-			(float(direction[0].text) * ((math.pi * 2) / 360), float(direction[1].text) * ((math.pi * 2) / 360), float(direction[2].text) * ((math.pi * 2) / 360)), \
+			position, \
+			direction, \
 			scale, \
 			])
 		

@@ -24,7 +24,20 @@
             <!-- 账号系统
             (Account system)
             -->
-            <account_system>
+    	    <account_system>
+    		<!-- 账号找回密码相关
+    			(Account reset password)
+    		-->
+        		<account_resetPassword>
+        			<!-- 是否开放重设密码
+        				(Whether open reset password)
+        			-->
+        			<enable>	true	</enable>
+        		</account_resetPassword>
+        			
+        		<!-- 账号注册相关
+        			(Account registration)
+        		-->
                 <account_registration> 
                     <!-- 是否开放注册 
                         (Whether open registration)
