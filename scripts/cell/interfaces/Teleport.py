@@ -13,7 +13,13 @@ class Teleport:
 		传送到某场景
 		"""
 		assert self.base != None
-		self.getSpaces().teleportSpace(self.base, spaceUType, position, direction, SpaceContext.createContext(self, spaceUType))
+		self.lastSpaceUType = self.spaceUType
+		
+		inputContext = SpaceContext.createContext(self, spaceUType)
+		if type(context) == dict:
+			inputContext.update(context)
+
+		self.getSpaces().teleportSpace(self.base, spaceUType, position, direction, inputContext)
 
 	#--------------------------------------------------------------------------------------------
 	#                              Callbacks

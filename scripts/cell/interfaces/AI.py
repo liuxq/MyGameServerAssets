@@ -283,6 +283,18 @@ class AI:
 		else:
 			self.choiceTarget()
 
+	def onEnemyEmpty(self):
+		"""
+		virtual method.
+		敌人列表空了
+		"""
+		INFO_MSG("%s::onEnemyEmpty: %i" % (self.getScriptName(), self.id))
+
+		if not self.isState(GlobalDefine.ENTITY_STATE_FREE):
+			self.changeState(GlobalDefine.ENTITY_STATE_FREE)
+			
+		self.backSpawnPos()
+		
 	def onTimer(self, tid, userArg):
 		"""
 		KBEngine method.

@@ -28,13 +28,16 @@ class Teleport:
 		该entity被正式激活为可使用， 此时entity已经建立了client对应实体， 可以在此创建它的
 		cell部分。
 		"""
+		if self.cell is not None:
+			return 
+
 		# 防止使用同一个号登陆不同的demo造成无法找到匹配的地图从而无法加载资源导致无法进入游戏
 		# 这里检查一下， 发现不对则强制同步到匹配的地图
 		# 忽略机器人的检查
 		if hasattr(self, "cellData") and self.getClientType() != 6:
 			# 如果角色跳转到了同属某个demo的其他场景那么不强制回到出生的主场景
 			if self.cellData["spaceUType"] in GlobalConst.g_demoMaps.values():
-				spaceUType = GlobalConst.g_demoMaps.get(self.getClientDatas(), 1)
+				spaceUType = GlobalConst.g_demoMaps.get(self.getClientDatas()[0], 1)
 
 				if self.cellData["spaceUType"] != spaceUType:
 					spacedatas = d_spaces.datas[spaceUType]

@@ -6,6 +6,12 @@
 		<!--<pitch> 20 </pitch>-->
 		<pitch/>
 		<roll/>
+
+		<!-- 优化VolatileInfo，关于VolatileInfo可以参考API文档，优化后服务器在确定实体在地面时（navigate）将不同步实体的Y坐标，客户端需要判断实体isOnGround，如果实体在地面则需要做贴地计算。
+			在高层建筑内寻路可能需要关闭优化，让服务器同步Y，这样才能精确计算上下层位置。
+			(不填默认为true)
+		-->
+		<optimized> true </optimized>
 	</Volatile>
 
 	<Implements>

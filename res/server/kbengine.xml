@@ -6,21 +6,30 @@
 		这样的好处是不会破坏引擎的默认设置，在你更新引擎时也不会产生冲突，以及在多个逻辑项目时不会影响到其他的项目设置。
 		详细说明请参考：http://kbengine.org/cn/docs/configuration/kbengine.html
 	-->
-        <trace_packet>
-                <debug_type>0</debug_type>
-        </trace_packet>
-        
-        <app_publish>0</app_publish>
+	
+	<trace_packet>
+		<debug_type> 0 </debug_type>
+	</trace_packet>
+	
+	<publish>
+		<!-- 发布状态, 可在脚本中获取该值。 KBEngine.publish()
+			(apps released state, This value can be obtained in the script. KBEngine.publish())
+			Type: Integer8
+			0 : debug
+			1 : release
+			其他自定义(Other custom)
+		-->
+		<state> 0 </state>
+
+		<!-- 脚本层发布的版本号
+			(Script layer released version number)
+		 -->
+		<script_version> 0.1.0 </script_version>
+	</publish>
         
         <!-- defined => kbe/res/server/kbengine_defs.xml -->
         <dbmgr>
-            <host> localhost</host> 
-            <databaseName> kbe </databaseName> 
-
-            <auth>  
-                <username> kbe </username>                                    <!-- Type: String -->
-                <password> kbe </password>                                    <!-- Type: String -->
-            </auth>
+           
             <!-- 账号系统
             (Account system)
             -->
@@ -50,6 +59,17 @@
                     <loginAutoCreate> false </loginAutoCreate>
                 </account_registration>
             </account_system>
+	    <databaseInterfaces>
+	    	<default>
+			<host> localhost</host> 
+			<databaseName> kbe </databaseName> 
+
+			<auth>  
+				<username> kbe </username>                                    <!-- Type: String -->
+				<password> kbe </password>                                    <!-- Type: String -->
+			</auth>
+		</default>
+	    </databaseInterfaces>
         </dbmgr>
         
         <cellapp>

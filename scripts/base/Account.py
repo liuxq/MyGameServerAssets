@@ -50,7 +50,7 @@ class Account(KBEngine.Proxy):
 		CLIENT_TYPE_BOTS				= 4,	// bots
 		CLIENT_TYPE_MINI				= 5,	// 微型客户端
 		"""
-		spaceUType = GlobalConst.g_demoMaps.get(self.getClientDatas(), 1)
+		spaceUType = GlobalConst.g_demoMaps.get(self.getClientDatas()[0], 1)
 		spaceData = d_spaces.datas.get(spaceUType)
 		
 		props = {
@@ -173,6 +173,23 @@ class Account(KBEngine.Proxy):
 		DEBUG_MSG("Account[%i].onClientDeath:" % self.id)
 		self.destroy()		
 		
+	def onDestroy(self):
+		"""
+		KBEngine method.
+		entity销毁
+		"""
+		DEBUG_MSG("Account::onDestroy: %i." % self.id)
+		
+		if self.activeAvatar:
+			self.activeAvatar.accountEntity = None
+
+			try:
+				self.activeAvatar.destroySelf()
+			except:
+				pass
+				
+			self.activeAvatar = None
+			
 	def __onAvatarCreated(self, baseRef, dbid, wasActive):
 		"""
 		选择角色进入游戏时被调用
@@ -203,7 +220,7 @@ class Account(KBEngine.Proxy):
 		avatar.accountEntity = self
 		self.activeAvatar = avatar
 		self.giveClientTo(avatar)
-
+		
 	def _onAvatarSaved(self, success, avatar):
 		"""
 		新建角色写入数据库回调
@@ -227,9 +244,11 @@ class Account(KBEngine.Proxy):
 			avatarinfo[3] = 1
 			self.characters[avatar.databaseID] = avatarinfo
 			self.writeToDB()
+		else:
+			avatarinfo[1] = "创建失败了"
 
-			avatar.destroy()
-
+		avatar.destroy()
+		
 		if self.client:
 			self.client.onCreateAvatarResult(0, avatarinfo)
 

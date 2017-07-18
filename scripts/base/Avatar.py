@@ -26,6 +26,8 @@ class Avatar(KBEngine.Proxy,
 		self.cellData["dbid"] = self.databaseID
 		self.nameB = self.cellData["name"]
 		self.spaceUTypeB = self.cellData["spaceUType"]
+		
+		self._destroyTimer = 0
 		self.inventory = InventoryMgr(self)
 
 	def onEntitiesEnabled(self):
@@ -36,6 +38,10 @@ class Avatar(KBEngine.Proxy,
 		"""
 		INFO_MSG("Avatar[%i-%s] entities enable. spaceUTypeB=%s, mailbox:%s" % (self.id, self.nameB, self.spaceUTypeB, self.client))
 		Teleport.onEntitiesEnabled(self)
+		
+		if self._destroyTimer > 0:
+			self.delTimer(self._destroyTimer)
+			self._destroyTimer = 0
 
 	def onGetCell(self):
 		"""
@@ -43,14 +49,14 @@ class Avatar(KBEngine.Proxy,
 		entity的cell部分实体被创建成功
 		"""
 		DEBUG_MSG('Avatar::onGetCell: %s' % self.cell)
-
+		
 	def createCell(self, space):
 		"""
 		defined method.
 		创建cell实体
 		"""
 		self.createCellEntity(space)
-
+	
 	def destroySelf(self):
 		"""
 		"""
@@ -65,14 +71,13 @@ class Avatar(KBEngine.Proxy,
 		# 如果帐号ENTITY存在 则也通知销毁它
 		if self.accountEntity != None:
 			if time.time() - self.accountEntity.relogin > 1:
-				self.accountEntity.activeAvatar = None
 				self.accountEntity.destroy()
-				self.accountEntity = None
 			else:
 				DEBUG_MSG("Avatar[%i].destroySelf: relogin =%i" % (self.id, time.time() - self.accountEntity.relogin))
 				
 		# 销毁base
-		self.destroy()
+		if not self.isDestroyed:
+			self.destroy()
 
 	def onClientDeath(self):
 		"""
@@ -152,3 +157,17 @@ class Avatar(KBEngine.Proxy,
 			self.client.pickUp_re(self.itemList[itemUUId])
 		else:#销毁物品
 			self.client.dropItem_re( itemId, itemUUId)
+			
+	def onDestroy(self):
+		"""
+		KBEngine method.
+		entity销毁
+		"""
+		DEBUG_MSG("Avatar::onDestroy: %i." % self.id)
+		
+		if self.accountEntity != None:
+			self.accountEntity.activeAvatar = None
+			self.accountEntity = None
+
+
+

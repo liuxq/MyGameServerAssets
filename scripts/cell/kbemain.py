@@ -66,3 +66,5 @@ def onAllSpaceGeometryLoaded(spaceID, isBootstrap, mapping):
 	具体哪部分需要由cell负责的范围决定
 	"""
 	DEBUG_MSG('onAllSpaceGeometryLoaded: spaceID=%s, isBootstrap=%i, mapping=%s.' % (spaceID, isBootstrap, mapping))
+	
+

@@ -130,3 +130,17 @@ class Avatar(KBEngine.Entity,
 
 		
 	
+	def onAddEnemy(self, entityID):
+		"""
+		virtual method.
+		有敌人进入列表
+		"""
+		if not self.isState(GlobalDefine.ENTITY_STATE_FIGHT):
+			self.changeState(GlobalDefine.ENTITY_STATE_FIGHT)
+
+	def onEnemyEmpty(self):
+		"""
+		virtual method.
+		敌人列表空了
+		"""
+		self.changeState(GlobalDefine.ENTITY_STATE_FREE)

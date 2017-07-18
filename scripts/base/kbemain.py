@@ -21,7 +21,17 @@ def onBaseAppReady(isBootstrap):
 	if isBootstrap:
 		# 创建spacemanager
 		KBEngine.createBaseLocally( "Spaces", {} )
-	
+
+def onReadyForShutDown():
+	"""
+	KBEngine method.
+	进程询问脚本层：我要shutdown了，脚本是否准备好了？
+	如果返回True，则进程会进入shutdown的流程，其它值会使得进程在过一段时间后再次询问。
+	用户可以在收到消息时进行脚本层的数据清理工作，以让脚本层的工作成果不会因为shutdown而丢失。
+	"""
+	INFO_MSG('onReadyForShutDown()')
+	return True
+
 def onBaseAppShutDown(state):
 	"""
 	KBEngine method.

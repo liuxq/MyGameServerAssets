@@ -159,6 +159,14 @@ class Monster(KBEngine.Entity,
 		AI.onRemoveEnemy(self, entityID)
 		Combat.onRemoveEnemy(self, entityID)
 
+	def onEnemyEmpty(self):
+		"""
+		virtual method.
+		敌人列表空了
+		"""
+		AI.onEnemyEmpty(self)
+		Combat.onEnemyEmpty(self)
+
 	def onDestroy(self):
 		"""
 		entity销毁
