@@ -44,6 +44,10 @@ class Spell:
 			return
 
 		target = KBEngine.entities.get(targetID)
+
+		if target.isNPC():
+			return
+
 		if target is None:
 			ERROR_MSG("Spell::spellTarget(%i):targetID=%i not found" % (self.id, targetID))
 			return
