@@ -1,6 +1,6 @@
 这是一个KBEngine服务端资产库
 ========
-TestGame和StriveGame的服务器脚本代码，用的是kbengine0.9.17的版本
+TestGame和StriveGame的服务器脚本代码，用的是kbengine 1.0.0的版本
 感谢kbe大神哈https://github.com/kbengine/kbengine
 ##启动服务端
 
