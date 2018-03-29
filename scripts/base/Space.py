@@ -11,15 +11,15 @@ import d_spaces
 import d_spaces_spawns
 import xml.etree.ElementTree as etree 
 
-class Space(KBEngine.Base, GameObject):
+class Space(KBEngine.Entity, GameObject):
 	"""
 	一个可操控cellapp上真正space的实体
 	注意：它是一个实体，并不是真正的space，真正的space存在于cellapp的内存中，通过这个实体与之关联并操控space。
 	"""
 	def __init__(self):
-		KBEngine.Base.__init__(self)
+		KBEngine.Entity.__init__(self)
 		GameObject.__init__(self)
-		self.createInNewSpace(None)
+		self.createCellEntityInNewSpace(None)
 		
 		self.spaceUTypeB = self.cellData["spaceUType"]
 		
@@ -80,20 +80,20 @@ class Space(KBEngine.Base, GameObject):
 		if datas is None:
 			ERROR_MSG("Space::onTimer: spawn %i is error!" % datas[0])
 
-		KBEngine.createBaseAnywhere("SpawnPoint", 
+		KBEngine.createEntityAnywhere("SpawnPoint", 
 									{"spawnEntityNO"	: datas[0], 	\
 									"position"			: datas[1], 	\
 									"direction"			: datas[2],		\
 									"modelScale"		: datas[3],		\
 									"createToCell"		: self.cell})
 				
-	def loginToSpace(self, avatarMailbox, context):
+	def loginToSpace(self, avatarEntityCall, context):
 		"""
 		defined method.
 		某个玩家请求登陆到这个space中
 		"""
-		avatarMailbox.createCell(self.cell)
-		self.onEnter(avatarMailbox)
+		avatarEntityCall.createCell(self.cell)
+		self.onEnter(avatarEntityCall)
 		
 	def logoutSpace(self, entityID):
 		"""
@@ -102,12 +102,12 @@ class Space(KBEngine.Base, GameObject):
 		"""
 		self.onLeave(entityID)
 		
-	def teleportSpace(self, entityMailbox, position, direction, context):
+	def teleportSpace(self, entityCall, position, direction, context):
 		"""
 		defined method.
 		请求进入某个space中
 		"""
-		entityMailbox.cell.onTeleportSpaceCB(self.cell, self.spaceUTypeB, position, direction)
+		entityCall.cell.onTeleportSpaceCB(self.cell, self.spaceUTypeB, position, direction)
 
 	def onTimer(self, tid, userArg):
 		"""
@@ -120,15 +120,15 @@ class Space(KBEngine.Base, GameObject):
 		
 		GameObject.onTimer(self, tid, userArg)
 		
-	def onEnter(self, entityMailbox):
+	def onEnter(self, entityCall):
 		"""
 		defined method.
 		进入场景
 		"""
-		self.avatars[entityMailbox.id] = entityMailbox
+		self.avatars[entityCall.id] = entityCall
 		
 		if self.cell is not None:
-			self.cell.onEnter(entityMailbox)
+			self.cell.onEnter(entityCall)
 		
 	def onLeave(self, entityID):
 		"""

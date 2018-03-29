@@ -35,7 +35,7 @@ class SpaceAlloc:
 			
 		context = copy.copy(context)
 		spaceData = d_spaces.datas.get(self._utype)
-		KBEngine.createBaseAnywhere(spaceData["entityType"], \
+		KBEngine.createEntityAnywhere(spaceData["entityType"], \
 											{"spaceUType" : self._utype,	\
 											"spaceKey" : spaceKey,	\
 											"context" : context,	\
@@ -54,12 +54,12 @@ class SpaceAlloc:
 		"""
 		del self._spaces[spaceKey]
 		
-	def onSpaceGetCell(self, spaceMailbox, spaceKey):
+	def onSpaceGetCell(self, spaceEntityCall, spaceKey):
 		"""
 		space的cell创建好了
 		"""
-		DEBUG_MSG("Spaces::onSpaceGetCell: space %i. entityID=%i, spaceKey=%i" % (self._utype, spaceMailbox.id, spaceKey))
-		self._spaces[spaceKey] = spaceMailbox
+		DEBUG_MSG("Spaces::onSpaceGetCell: space %i. entityID=%i, spaceKey=%i" % (self._utype, spaceEntityCall.id, spaceKey))
+		self._spaces[spaceKey] = spaceEntityCall
 
 		pendingLogonEntities = self._pendingLogonEntities.pop(spaceKey, [])
 		pendingEnterEntityMBs = self._pendingEnterEntityMBs.pop(spaceKey, [])
@@ -103,7 +103,7 @@ class SpaceAlloc:
 		DEBUG_MSG("Spaces::loginToSpace: avatarEntity=%s" % avatarEntity.id)
 		space.loginToSpace(avatarEntity, context)
 
-	def teleportSpace(self, entityMailbox, position, direction, context):
+	def teleportSpace(self, entityCall, position, direction, context):
 		"""
 		virtual method.
 		请求进入某个space中
@@ -116,15 +116,15 @@ class SpaceAlloc:
 		if space == CONST_WAIT_CREATE:
 			spaceKey = context.get("spaceKey", 0)
 			if spaceKey not in self._pendingEnterEntityMBs:
-				self._pendingEnterEntityMBs[spaceKey] = [(entityMailbox, position, direction, context)]
+				self._pendingEnterEntityMBs[spaceKey] = [(entityCall, position, direction, context)]
 			else:
-				self._pendingEnterEntityMBs[spaceKey].append((entityMailbox, position, direction, context))
+				self._pendingEnterEntityMBs[spaceKey].append((entityCall, position, direction, context))
 
-			DEBUG_MSG("Spaces::teleportSpace: avatarEntity=%s add pending." % entityMailbox.id)
+			DEBUG_MSG("Spaces::teleportSpace: avatarEntity=%s add pending." % entityCall.id)
 			return
 			
-		DEBUG_MSG("Spaces::teleportSpace: entityMailbox=%s" % entityMailbox)
-		space.teleportSpace(entityMailbox, position, direction, context)
+		DEBUG_MSG("Spaces::teleportSpace: entityCall=%s" % entityCall)
+		space.teleportSpace(entityCall, position, direction, context)
 		
 class SpaceAllocDuplicate(SpaceAlloc):
 	"""

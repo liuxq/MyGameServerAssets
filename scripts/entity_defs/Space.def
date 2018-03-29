@@ -5,33 +5,33 @@
 		<pitch> 20 </pitch>
 	</Volatile>
 
-	<Implements>
-		<Interface>			GameObject		</Interface>
-	</Implements>
+	<Interfaces>
+		<Interface>			GameObject				</Interface>
+	</Interfaces>
 
 	<Properties>
 		<spaceUType>
-			<Type>			UINT32				</Type>
+			<Type>			UINT32					</Type>
 			<Flags>			CELL_PRIVATE			</Flags>
-			<Persistent>		false				</Persistent>
+			<Persistent>	false					</Persistent>
 		</spaceUType>
 
 		<spaceKey>
-			<Type>			DBID				</Type>
-			<Flags>			BASE				</Flags>
-			<Persistent>		true				</Persistent>
+			<Type>			DBID					</Type>
+			<Flags>			BASE					</Flags>
+			<Persistent>	true					</Persistent>
 		</spaceKey>
 
 		<context>
-			<Type>			PYTHON				</Type>
-			<Flags>			BASE				</Flags>
-			<Persistent>		true				</Persistent>
+			<Type>			PYTHON					</Type>
+			<Flags>			BASE					</Flags>
+			<Persistent>	true					</Persistent>
 		</context>
 	</Properties>
 
 	<BaseMethods>
 		<loginToSpace>
-			<Arg>		MAILBOX		</Arg>
+			<Arg>		ENTITYCALL	</Arg>
 			<Arg>		PYTHON		</Arg>
 		</loginToSpace>
 
@@ -40,14 +40,14 @@
 		</logoutSpace>
 
 		<teleportSpace>
-			<Arg>		MAILBOX		</Arg>
+			<Arg>		ENTITYCALL	</Arg>
 			<Arg>		POSITION3D	</Arg>
 			<Arg>		DIRECTION3D	</Arg>
 			<Arg>		PYTHON		</Arg>
 		</teleportSpace>
 
 		<onEnter>
-			<Arg>		MAILBOX		</Arg>
+			<Arg>		ENTITYCALL	</Arg>
 		</onEnter>
 
 		<onLeave>
@@ -57,7 +57,7 @@
 
 	<CellMethods>
 		<onEnter>
-			<Arg>		MAILBOX		</Arg>
+			<Arg>		ENTITYCALL	</Arg>
 		</onEnter>
 
 		<onLeave>

@@ -93,7 +93,7 @@ class Motion:
 			return
 
 		self.isMoving = True
-		self.moveToEntity(targetID, self.moveSpeed * 0.1, dist, None, True, 1)
+		self.moveToEntity(targetID, self.moveSpeed * 0.1, dist, None, True, False)
 		
 	def gotoPosition(self, position, dist = 0.0):
 		"""
@@ -120,7 +120,7 @@ class Motion:
 			else:
 				destPos = Math.Vector3(position)
 			
-			self.moveToPoint(destPos, speed, 0, None, 1, 1)
+			self.moveToPoint(destPos, speed, 0, None, 1, False)
 
 	def getStopPoint(self, yaw = None, rayLength = 100.0):
 		"""

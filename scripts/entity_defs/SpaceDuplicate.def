@@ -1,7 +1,8 @@
 <root>
 	<Parent>	Space	</Parent>
-	<Implements>
-	</Implements>
+	
+	<Interfaces>
+	</Interfaces>
 
 	<Properties>
 	</Properties>

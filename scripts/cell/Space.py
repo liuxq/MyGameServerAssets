@@ -33,12 +33,12 @@ class Space(KBEngine.Entity, GameObject):
 		del KBEngine.globalData["space_%i" % self.spaceID]
 		self.destroySpace()
 		
-	def onEnter(self, entityMailbox):
+	def onEnter(self, entityCall):
 		"""
 		defined method.
 		进入场景
 		"""
-		DEBUG_MSG('Space::onEnter space[%d] entityID = %i.' % (self.spaceUType, entityMailbox.id))
+		DEBUG_MSG('Space::onEnter space[%d] entityID = %i.' % (self.spaceUType, entityCall.id))
 		
 	def onLeave(self, entityID):
 		"""

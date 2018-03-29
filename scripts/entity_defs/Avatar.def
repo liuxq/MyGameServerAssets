@@ -14,7 +14,7 @@
 		<optimized> true </optimized>
 	</Volatile>
 
-	<Implements>
+	<Interfaces>
 		<Interface>	GameObject		</Interface>
 		<Interface>	State			</Interface>
 		<Interface>	Motion			</Interface>
@@ -24,8 +24,7 @@
 		<Interface>	Teleport		</Interface>
 		<Interface>	AvatarPropertys	        </Interface>
 		<Interface>	Dialog			</Interface>
-		
-	</Implements>
+	</Interfaces>
 
 	<Properties>
 		<roleType>
@@ -94,7 +93,7 @@
 
 	<BaseMethods>
 		<createCell>
-			<Arg>		MAILBOX		</Arg>
+			<Arg>		ENTITYCALL					</Arg>
 		</createCell>
 		<sendChatMessage>
         	<Arg>		UNICODE		</Arg>

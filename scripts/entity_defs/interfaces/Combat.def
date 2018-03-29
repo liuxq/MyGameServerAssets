@@ -1,7 +1,7 @@
 <root>
-	<Implements>
+	<Interfaces>
 		<Interface> 			CombatPropertys			</Interface>
-	</Implements>
+	</Interfaces>
 
 	<Properties>
 		<enemyLog>

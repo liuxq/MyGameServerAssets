@@ -5,11 +5,11 @@
 		<!--<pitch> 20 </pitch>-->
 	</Volatile>
 
-	<Implements>
+	<Interfaces>
 		<Interface>	GameObject		</Interface>
 		<Interface>	NPCObject		</Interface>
 		<Interface>	Motion			</Interface>
-	</Implements>
+	</Interfaces>
 
 	<Properties>
 	</Properties>

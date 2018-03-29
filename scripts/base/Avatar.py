@@ -30,14 +30,14 @@ class Avatar(KBEngine.Proxy,
 		self._destroyTimer = 0
 		self.inventory = InventoryMgr(self)
 
-	def onEntitiesEnabled(self):
+	def onClientEnabled(self):
 		"""
 		KBEngine method.
 		该entity被正式激活为可使用， 此时entity已经建立了client对应实体， 可以在此创建它的
 		cell部分。
 		"""
-		INFO_MSG("Avatar[%i-%s] entities enable. spaceUTypeB=%s, mailbox:%s" % (self.id, self.nameB, self.spaceUTypeB, self.client))
-		Teleport.onEntitiesEnabled(self)
+		INFO_MSG("Avatar[%i-%s] entities enable. spaceUTypeB=%s, entityCall:%s" % (self.id, self.nameB, self.spaceUTypeB, self.client))
+		Teleport.onClientEnabled(self)
 		
 		if self._destroyTimer > 0:
 			self.delTimer(self._destroyTimer)

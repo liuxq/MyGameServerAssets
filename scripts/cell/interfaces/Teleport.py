@@ -24,17 +24,17 @@ class Teleport:
 	#--------------------------------------------------------------------------------------------
 	#                              Callbacks
 	#--------------------------------------------------------------------------------------------
-	def onTeleportSpaceCB(self, spaceCellMailbox, spaceUType, position, direction):
+	def onTeleportSpaceCB(self, spaceCellEntityCall, spaceUType, position, direction):
 		"""
 		defined.
 		baseapp返回teleportSpace的回调
 		"""
 		DEBUG_MSG("Teleport::onTeleportSpaceCB: %i spaceID=%s, spaceUType=%i, pos=%s, dir=%s." % \
-					(self.id, spaceCellMailbox.id, spaceUType, position, direction))
+					(self.id, spaceCellEntityCall.id, spaceUType, position, direction))
 		
 		
 		self.getCurrSpaceBase().onLeave(self.id)
-		self.teleport(spaceCellMailbox, position, direction)
+		self.teleport(spaceCellEntityCall, position, direction)
 		
 	def onTeleportSuccess(self, nearbyEntity):
 		"""

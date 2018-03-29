@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import KBEngine
+import copy
 from KBEDebug import *
 
 class Account(KBEngine.Entity):
@@ -14,8 +15,9 @@ class Account(KBEngine.Entity):
 		"""
 		
 		DEBUG_MSG("Account:onReqAvatarList::%s" % (list(infos['values'])))
-		self.base.reqCreateAvatar("kbe_bot_%s" % self.id, 1)
-		
+		self.base.reqCreateAvatar(1, "kbe_bot_%s" % self.id)
+		self.characters = copy.deepcopy(infos["values"])
+
 	def onCreateAvatarResult(self, retcode, info):
 		"""
 		defined method.
@@ -24,6 +26,11 @@ class Account(KBEngine.Entity):
 		
 		if retcode == 0:
 			self.base.selectAvatarGame(info["dbid"])
+		else:
+			if len(self.characters) > 0:
+				for infos in self.characters:
+					self.base.selectAvatarGame(infos["dbid"])
+					break
 
 	def onRemoveAvatar(self, dbid):
 		"""

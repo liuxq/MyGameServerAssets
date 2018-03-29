@@ -275,12 +275,7 @@ class AI:
 				
 		self.targetID = 0
 		
-		if len(self.enemyLog) == 0:
-			if not self.isState(GlobalDefine.ENTITY_STATE_FREE):
-				self.changeState(GlobalDefine.ENTITY_STATE_FREE)
-				
-			self.backSpawnPos()
-		else:
+		if len(self.enemyLog) > 0:
 			self.choiceTarget()
 
 	def onEnemyEmpty(self):

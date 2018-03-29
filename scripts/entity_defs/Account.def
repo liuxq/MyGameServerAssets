@@ -6,7 +6,7 @@
 			<Persistent> true </Persistent>
 		</characters>
         <activeAvatar>
-            <Type>          MAILBOX             </Type>
+            <Type>          ENTITYCALL             </Type>
             <Flags>         BASE                </Flags>
         </activeAvatar>
 	</Properties>
