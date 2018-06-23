@@ -26,7 +26,7 @@ class Space(KBEngine.Entity, GameObject):
 		self.spaceResName = d_spaces.datas.get(self.spaceUTypeB)['resPath']
 		
 		# 这个地图上创建的entity总数
-		self.tmpCreateEntityDatas = copy.deepcopy(d_spaces_spawns.datas.get(self.spaceUTypeB, ()))
+		self.tmpCreateEntityDatas = copy.deepcopy(d_spaces_spawns.datas.get(self.spaceUTypeB, []))
 		
 		self.avatars = {}
 		self.createSpawnPointDatas()
